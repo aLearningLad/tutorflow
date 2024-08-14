@@ -1,4 +1,6 @@
 import { SignedIn, SignOutButton } from "@clerk/nextjs";
+import { nanoid } from "nanoid";
+import Link from "next/link";
 import React from "react";
 
 const DashBoard = () => {
@@ -8,6 +10,12 @@ const DashBoard = () => {
       <SignedIn>
         <SignOutButton>Click here to sign out!</SignOutButton>
       </SignedIn>
+      <Link
+        className=" bg-red-600 text-white p-3 my-4"
+        href={`/tutroom/${nanoid()}`}
+      >
+        Try entering a room with generated ID
+      </Link>
     </main>
   );
 };
