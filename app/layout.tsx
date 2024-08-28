@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import {
+  Inter,
+  Libre_Caslon_Display,
+  Libre_Caslon_Text,
+} from "next/font/google";
+
 import "./globals.css";
 import {
   ClerkProvider,
@@ -11,6 +16,10 @@ import {
 import "@stream-io/video-react-sdk/dist/css/styles.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const libreDisplay = Libre_Caslon_Display({
+  subsets: ["latin"],
+  weight: ["400"],
+});
 
 export const metadata: Metadata = {
   title: "TutorFlow",
@@ -25,7 +34,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className={libreDisplay.className}>{children}</body>
       </html>
     </ClerkProvider>
   );
