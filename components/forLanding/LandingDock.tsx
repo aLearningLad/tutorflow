@@ -30,7 +30,7 @@ const Icons = {
   ),
   x: (props: IconProps) => (
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <title>X</title>
+      <title>Mention Us</title>
       <path
         fill="currentColor"
         d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"
@@ -46,7 +46,7 @@ const Icons = {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <title>youtube</title>
+      <title>Youtube</title>
       <path d="M29.41,9.26a3.5,3.5,0,0,0-2.47-2.47C24.76,6.2,16,6.2,16,6.2s-8.76,0-10.94.59A3.5,3.5,0,0,0,2.59,9.26,36.13,36.13,0,0,0,2,16a36.13,36.13,0,0,0,.59,6.74,3.5,3.5,0,0,0,2.47,2.47C7.24,25.8,16,25.8,16,25.8s8.76,0,10.94-.59a3.5,3.5,0,0,0,2.47-2.47A36.13,36.13,0,0,0,30,16,36.13,36.13,0,0,0,29.41,9.26ZM13.2,20.2V11.8L20.47,16Z" />
     </svg>
   ),
@@ -62,13 +62,13 @@ const Icons = {
 
 const DATA = {
   navbar: [
-    { href: "#", icon: HomeIcon, label: "Home" },
+    { href: "#", icon: HomeIcon, label: "Sign In" },
     { href: "#", icon: PencilIcon, label: "Blog" },
   ],
   contact: {
     social: {
       GitHub: {
-        name: "GitHub",
+        name: "Repo",
         url: "#",
         icon: Icons.github,
       },
@@ -83,7 +83,7 @@ const DATA = {
         icon: Icons.x,
       },
       email: {
-        name: "Send Email",
+        name: "Mail Us",
         url: "#",
         icon: Icons.email,
       },
@@ -93,7 +93,7 @@ const DATA = {
 
 export function LandingDock() {
   return (
-    <div className="relative flex min-h-20 w-full flex-col items-center justify-center overflow-hidden rounded-lg md:rounded-xl lg:rounded-2xl xl:rounded-3xl border-none bg-orange-600 md:shadow-xl">
+    <div className="relative flex min-h-20 w-full flex-col items-center justify-center overflow-hidden rounded-lg md:rounded-xl lg:rounded-2xl xl:rounded-3xl border-none md:shadow-xl">
       <TooltipProvider>
         <Dock direction="middle">
           {DATA.navbar.map((item) => (
@@ -116,7 +116,7 @@ export function LandingDock() {
               </Tooltip>
             </DockIcon>
           ))}
-          <Separator orientation="vertical" className="h-full" />
+          {/* <Separator orientation="vertical" className="h-full" /> */}
           {Object.entries(DATA.contact.social).map(([name, social]) => (
             <DockIcon key={name}>
               <Tooltip>
@@ -125,10 +125,10 @@ export function LandingDock() {
                     href={social.url}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full"
+                      "size-12 rounded-full group hover:bg-neutral-50/40 flex flex-col items-center justify-center"
                     )}
                   >
-                    <social.icon className="size-4" />
+                    <social.icon className="size-4 group-hover:text-white" />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -137,7 +137,7 @@ export function LandingDock() {
               </Tooltip>
             </DockIcon>
           ))}
-          <Separator orientation="vertical" className="h-full py-2" />
+          {/* <Separator orientation="vertical" className="h-full py-2" /> */}
           {/* <DockIcon>
             <Tooltip>
               <TooltipTrigger asChild>
