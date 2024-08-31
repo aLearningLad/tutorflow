@@ -40,19 +40,17 @@ export default async function Home() {
         </h1>
       </section>
       <section className="flex flex-col w-full py-3 min-h-[40vh] max-h-fit items-center">
-        <span className=" flex items-center gap-1">
-          <h2 className="">Learn.</h2>
-          <h1 className="">Teach.</h1>
-          <h2 className="">Share.</h2>
-          <h1 className="">Grow</h1>
+        <span className=" flex items-center gap-1 mb-3 lg:mb-5 xl:mb-7">
+          <h2 className=" text-lg lg:text-[42px]">Learn</h2>
+          <h1 className=" text-xl lg:text-[60px] border-x-2 h-full border-white mx-2 px-5">
+            Teach
+          </h1>
+          <h2 className=" text-lg lg:text-[42px]">Share</h2>
         </span>
-        <h4 className=" w-11/12 md:w-10/12 lg:w-8/12 xl:w-6/12 text-center text-neutral-200 text-[14px] lg:text-[16px] ">
-          Welcome to tutorFlow—your go-to platform for seamless learning and
-          teaching. Connect with passionate educators, share knowledge, and
-          watch your skills flourish. Whether you're here to learn or teach,
-          tutorFlow empowers you to grow every step of the way. Join now and
-          experience a community dedicated to growth through learning, teaching,
-          and sharing.
+        <h4 className=" w-11/12 md:w-10/12 lg:w-8/12 xl:w-6/12 text-center text-neutral-200 text-[16px] lg:text-xl ">
+          Welcome to tutorFlow—your go-to platform for seamless video tutoring.
+          Connect with passionate tutors, absorb knowledge, and watch your
+          skills flourish.
         </h4>
         <LandingDock />
         <p className=" text-[10px]">A HillSawft&copy; project</p>

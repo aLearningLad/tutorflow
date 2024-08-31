@@ -5,8 +5,8 @@ import React from "react";
 
 const DashBoard = () => {
   return (
-    <main className=" min-h-screen bg-yellow-600 text-black flex justify-center items-center flex-col">
-      <h3>If you see this, it means you are allowed in!</h3>
+    <main className=" min-h-screen bg-yellow-600 text-black flex flex-col lg:flex-row">
+      {/* <h3>If you see this, it means you are allowed in!</h3>
       <SignedIn>
         <SignOutButton>Click here to sign out!</SignOutButton>
       </SignedIn>
@@ -15,7 +15,13 @@ const DashBoard = () => {
         href={`/tutroom/${nanoid()}`}
       >
         Try entering a room with generated ID
-      </Link>
+      </Link> */}
+
+      {/* sidebar */}
+
+      {/* notifs and navigable options */}
+
+      {/* upcoming */}
     </main>
   );
 };
