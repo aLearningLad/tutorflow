@@ -5,6 +5,6 @@ declare type TtutRoomParams = {
 declare type TsidebarData = {
   link: string;
   label: string;
-  linkId: string;
+  linkId: number;
   linkImg: React.ReactElement;
 };
