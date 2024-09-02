@@ -9,30 +9,52 @@ export const sidebardata: TsidebarData[] = [
     linkId: 2776111,
     label: "Home",
     link: "/dashboard",
-    linkImg: <FaHome />,
+    linkImg: (
+      <FaHome className="text-neutral-200 group-hover:text-white" size={20} />
+    ),
   },
   {
     linkId: 65311833,
     label: "Calender",
     link: "/calender",
-    linkImg: <BsFillCalendarDateFill />,
+    linkImg: (
+      <BsFillCalendarDateFill
+        className=" text-neutral-200 group-hover:text-white"
+        size={20}
+      />
+    ),
   },
   {
     linkId: 3788221098,
     label: "Schedule",
     link: "/schedule",
-    linkImg: <MdTipsAndUpdates />,
+    linkImg: (
+      <MdTipsAndUpdates
+        className="text-neutral-200 group-hover:text-white"
+        size={20}
+      />
+    ),
   },
   {
     linkId: 3321164,
     label: "Join a meeting",
     link: "/join",
-    linkImg: <TbArrowsJoin2 />,
+    linkImg: (
+      <TbArrowsJoin2
+        className="text-neutral-200 group-hover:text-white"
+        size={20}
+      />
+    ),
   },
   {
     linkId: 4331284,
     label: "Chats",
     link: "/chats",
-    linkImg: <IoChatbubbleEllipses />,
+    linkImg: (
+      <IoChatbubbleEllipses
+        className="text-neutral-200 group-hover:text-white"
+        size={30}
+      />
+    ),
   },
 ];
