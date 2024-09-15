@@ -10,6 +10,9 @@ declare type TsidebarData = {
 };
 
 declare type Tsquaredata = {
-  btnId: string;
+  btnId: number;
   btnTitle: string;
+  btnSub: string;
+  btnImg: string;
+  btnIcon: React.ReactElement;
 };
