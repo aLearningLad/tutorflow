@@ -3,7 +3,7 @@ import { FaEnvelope } from "react-icons/fa";
 import { RiMessage3Fill } from "react-icons/ri";
 
 const LowerNotifs = () => {
-  const falseNotifs = [1, 2, 3, 4, 5, 6];
+  const falseNotifs = [1, 2, 3, 4, 5, 6, 7];
   return (
     <div className="w-full h-[35%] flex justify-center flex-col text-center py-2 px-1 lg:px-7">
       <header>
@@ -11,7 +11,9 @@ const LowerNotifs = () => {
       </header>
       <section className=" w-full min-h-[85%] flex flex-col gap-3 overflow-auto p-2 ">
         {falseNotifs.map((notif) => (
-          <div className=" border-2 bg-slate-600/40 border-neutral-300/40 rounded-md p-1 flex justify-between items-center">
+          <div
+            className={`border-2 hover:scale-95 cursor-pointer transition-all duration-300 ease-in min-h-12 bg-slate-600/40 border-neutral-300/40 rounded-md p-1 flex justify-between items-center`}
+          >
             <div className=" w-3/12 h-full flex justify-center items-center">
               {/* add a state here, render open envelope if message is viewed */}
               <FaEnvelope size={14} className=" text-white" />
