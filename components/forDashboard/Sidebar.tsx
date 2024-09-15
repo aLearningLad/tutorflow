@@ -6,8 +6,8 @@ import SideBarBtn from "../forSidebar/SideBarBtn";
 
 const Sidebar: React.FC<Isidebar> = () => {
   return (
-    <nav className="absolute bottom-0 lg:relative h-14 lg:min-h-screen w-full lg:w-24 bg-slate-950 lg:border-r-4 border-slate-700">
-      <section className=" w-2/12 lg:w-full flex justify-center items-center h-full lg:h-1/6 xl:h-[13%] border-2 border-white">
+    <nav className="absolute bottom-0 lg:relative h-14 lg:min-h-screen w-full lg:w-24 bg-slate-950 lg:border-r-2 border-neutral-600">
+      <section className=" w-2/12 lg:w-full flex justify-center items-center h-full lg:h-1/6 xl:h-[13%] bg-neutral-500/40">
         {/* app logo here */}
       </section>
       <section className="w-full h-full lg:h-5/6 flex flex-row lg:flex-col">
