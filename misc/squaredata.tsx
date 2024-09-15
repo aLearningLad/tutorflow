@@ -1,5 +1,7 @@
 import { IoIosVideocam } from "react-icons/io";
 import { FaSquarePlus } from "react-icons/fa6";
+import { IoBriefcase } from "react-icons/io5";
+import { FaShare } from "react-icons/fa";
 
 export const squaredata: Tsquaredata[] = [
   {
@@ -10,10 +12,24 @@ export const squaredata: Tsquaredata[] = [
     btnIcon: <IoIosVideocam size={20} className=" text-white" />,
   },
   {
-    btnId: 278178121,
+    btnId: 1001265521,
     btnTitle: "Join meeting",
     btnSub: "Via invitation link",
     btnImg: "/assets/join.png",
     btnIcon: <FaSquarePlus size={20} className=" text-white" />,
+  },
+  {
+    btnId: 982111837401,
+    btnTitle: "Set up with calender",
+    btnSub: "Set with calender",
+    btnImg: "/assets/calender.png",
+    btnIcon: <IoBriefcase size={20} className=" text-white" />,
+  },
+  {
+    btnId: 54667281,
+    btnTitle: "Share meeting",
+    btnSub: "Share meet with others",
+    btnImg: "/assets/share.png",
+    btnIcon: <FaShare size={20} className=" text-white" />,
   },
 ];
