@@ -20,7 +20,7 @@ const Notifs = () => {
           <IoMdSearch size={20} className=" text-white" />
           <NotifsSearchBar />
         </div>
-        <div className=" h-full w-12 text-white text-[8px] rounded-md border-2 border-white">
+        <div className=" h-full w-12 lg:flex hidden text-white text-[8px] rounded-md border-2 border-white">
           google account image
         </div>
       </section>

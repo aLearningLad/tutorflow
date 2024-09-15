@@ -8,3 +8,8 @@ declare type TsidebarData = {
   linkId: number;
   linkImg: React.ReactElement;
 };
+
+declare type Tsquaredata = {
+  btnId: string;
+  btnTitle: string;
+};
