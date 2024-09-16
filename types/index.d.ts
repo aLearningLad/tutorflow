@@ -16,3 +16,13 @@ declare type Tsquaredata = {
   btnImg: string;
   btnIcon: React.ReactElement;
 };
+
+declare type Treminderdetails = {
+  reminderId: string; //generate this with nanoid
+  title: string;
+  startsAt: string;
+  endsAt: string;
+  detail: string;
+  shareableLink: string;
+  private: boolean;
+};
