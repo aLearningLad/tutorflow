@@ -1,6 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const SquareBtn: React.FC<Tsquaredata> = ({
   btnIcon,
@@ -12,7 +20,6 @@ const SquareBtn: React.FC<Tsquaredata> = ({
   const handleBtnClick = (id: number) => {
     switch (id) {
       case 278178121:
-        alert("New meeting clicked!");
         break;
       case 1001265521:
         alert("Join meeting clicked!");
@@ -32,7 +39,7 @@ const SquareBtn: React.FC<Tsquaredata> = ({
 
   return (
     <button
-      onClick={() => handleBtnClick(btnId)}
+      // onClick={() => handleBtnClick(btnId)}
       className={`w-full p-2 hover:scale-90 hover:bg-slate-800 hover:border-2 hover:border-white transition-all duration-300 ease-in-out ${
         btnId === 278178121 && " bg-orange-500 text-white"
       } h-full flex-col text-white ${
@@ -45,7 +52,18 @@ const SquareBtn: React.FC<Tsquaredata> = ({
     >
       <section className=" w-full h-[60%] flex justify-between px-2 py-1 ">
         <div className="w-3/12 h-[50%] bg-neutral-50/30 flex justify-center items-center rounded-lg">
-          {btnIcon}
+          <Dialog>
+            <DialogTrigger> {btnIcon}</DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Are you absolutely sure?</DialogTitle>
+                <DialogDescription>
+                  This action cannot be undone. This will permanently delete
+                  your account and remove your data from our servers.
+                </DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
         </div>
         <Image src={btnImg} width={100} height={100} alt="button Icon" />
       </section>

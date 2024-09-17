@@ -6,8 +6,8 @@ const LowerNotifs = () => {
   const falseNotifs = [1, 2, 3, 4, 5, 6, 7];
   return (
     <div className="w-full h-[35%] flex justify-center flex-col text-center py-2 px-1 lg:px-7">
-      <header>
-        <h1 className=" text-[18px]">Notifications</h1>
+      <header className=" mt-3">
+        <h1 className=" text-[20px]">Notifications</h1>
       </header>
       <section className=" w-full min-h-[85%] flex flex-col gap-3 overflow-auto p-2 ">
         {falseNotifs.map((notif) => (

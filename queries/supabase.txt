@@ -1,0 +1,12 @@
+### table to store reminders
+CREATE TABLE reminders (
+  authorId TEXT NOT NULL, 
+author TEXT NOT NULL,
+reminderId TEXT PRIMARY KEY NOT NULL, ---> generate via nanoid()
+title TEXT NOT NULL,
+startsAt TEXT NOT NULL, ---> show as string, calculate live time difference
+endsAt TEXT NOT NULL, ----> same as above
+detail TEXT NOT NULL,
+shareable_link TEXT NOT NULL, ---> useEffect will depend on state update to get this value, then upload reminder to DB
+is_private BOOLEAN NOT NULL
+);

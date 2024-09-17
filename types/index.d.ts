@@ -17,12 +17,13 @@ declare type Tsquaredata = {
   btnIcon: React.ReactElement;
 };
 
-declare type Treminderdetails = {
+declare type TreminderCard = {
+  author: string; //this is user's email from Clerk
   reminderId: string; //generate this with nanoid
   title: string;
   startsAt: string;
   endsAt: string;
   detail: string;
   shareableLink: string;
-  private: boolean;
+  is_private: boolean;
 };
