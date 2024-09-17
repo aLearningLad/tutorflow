@@ -23,6 +23,20 @@ const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
       </Dialog>
     );
   }
+
+  if (modalFor === modalOptions.CALENDER) {
+    return (
+      <Dialog>
+        <DialogTrigger> {btnIcon}</DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Setup using calender</DialogTitle>
+            <DialogDescription>This will open the calender</DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+    );
+  }
 };
 
 export default Modals;
