@@ -8,6 +8,8 @@ const ToJoinInput = () => {
   const router = useRouter();
 
   const enterSession = async () => {
+    meetingLink;
+
     try {
     } catch (error) {}
   };
