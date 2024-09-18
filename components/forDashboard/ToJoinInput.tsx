@@ -1,5 +1,6 @@
 "use client";
 
+import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -8,7 +9,15 @@ const ToJoinInput = () => {
   const router = useRouter();
 
   const enterSession = async () => {
-    meetingLink;
+    const supabase = createClient();
+    const { data: meetingExists, error: meetingError } = await supabase
+      .from("reminders")
+      .select("shareable_link")
+      .eq("shareable_link", meetingLink);
+
+    if (!meetingExists) {
+      return;
+    }
 
     try {
     } catch (error) {}
