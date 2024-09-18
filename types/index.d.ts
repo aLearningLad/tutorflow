@@ -27,3 +27,9 @@ declare type TreminderCard = {
   shareableLink: string;
   is_private: boolean;
 };
+
+// these are included within email sent as invite
+declare type Tscheduled = {
+  meetingLink: string; //base url/tutroom/id (generated via nanoid)
+  entryId: string; //created via nanoid, will be attached to every email invite sent via nodemailer
+};
