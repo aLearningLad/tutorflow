@@ -16,12 +16,26 @@ const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
   if (modalFor === modalOptions.NEW) {
     return (
       <Dialog>
-        <DialogTrigger> {btnIcon}</DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>You're creating a new tutorial session</DialogTitle>
-            <DialogDescription>This will open a tut session</DialogDescription>
+        <DialogTrigger>{btnIcon}</DialogTrigger>
+        <DialogContent className=" w-full h-[70vh] md:w-10/12 lg:w-8/12 xl:w-6/12 flex flex-col items-center justify-center text-center bg-slate-600/50 text-white">
+          <DialogHeader className=" text-center">
+            <DialogTitle className=" text-2xl">
+              You're creating a new tutorial session
+            </DialogTitle>
+            <DialogDescription className=" text-white w-full flex justify-center text-center">
+              This will open a tut session
+            </DialogDescription>
           </DialogHeader>
+          <section className=" w-full flex flex-col items-center justify-center text-center">
+            <h2>Invite participants by email</h2>
+            <div className=" w-full">
+              <input
+                type="text"
+                placeholder="Eg. isaac44@tutorflow.com"
+                className=" w-full h-12 rounded-md bg-slate-600/70 px-3 py-1"
+              />
+            </div>
+          </section>
         </DialogContent>
       </Dialog>
     );
