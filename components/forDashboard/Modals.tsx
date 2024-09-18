@@ -8,6 +8,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { modalOptions } from "@/lib/enums";
+import InputForNew from "./InputForNew";
 
 const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
   // modals are not responding to if statements. The last one is a default I used for testing.
@@ -26,16 +27,7 @@ const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
               This will open a tut session
             </DialogDescription>
           </DialogHeader>
-          <section className=" w-full flex flex-col items-center justify-center text-center">
-            <h2>Invite participants by email</h2>
-            <div className=" w-full">
-              <input
-                type="text"
-                placeholder="Eg. isaac44@tutorflow.com"
-                className=" w-full h-12 rounded-md bg-slate-600/70 px-3 py-1"
-              />
-            </div>
-          </section>
+          <InputForNew />
         </DialogContent>
       </Dialog>
     );
