@@ -9,18 +9,29 @@ const ToJoinInput = () => {
   const router = useRouter();
 
   const enterSession = async () => {
-    const supabase = createClient();
-    const { data: meetingExists, error: meetingError } = await supabase
-      .from("reminders")
-      .select("shareable_link")
-      .eq("shareable_link", meetingLink);
-
-    if (!meetingExists) {
+    if (meetingLink.length < 5) {
       return;
     }
 
+    const supabase = createClient();
+
     try {
-    } catch (error) {}
+      const { data: meetingExists, error: meetingError } = await supabase
+        .from("reminders")
+        .select("shareable_link")
+        .eq("shareable_link", meetingLink);
+
+      if (!meetingExists) {
+        alert("No meeting link found!");
+        return;
+      }
+
+      if (meetingError) {
+        throw new Error(meetingError);
+      }
+    } catch (error) {
+      console.log("Error fetching meeting", error);
+    }
   };
 
   return (
@@ -31,7 +42,7 @@ const ToJoinInput = () => {
         value={meetingLink}
         onChange={(e) => setMeetingLink(e.target.value)}
       />
-      <button>Go to meeting</button>
+      <button onClick={enterSession}>Go to meeting</button>
     </div>
   );
 };
