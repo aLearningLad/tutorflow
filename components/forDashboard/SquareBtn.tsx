@@ -18,14 +18,15 @@ const SquareBtn: React.FC<Tsquaredata> = ({
     switch (id) {
       case 278178121:
         setModalForValue(modalOptions.NEW);
+        break;
       case 1001265521:
-        alert("Join meeting clicked!");
+        setModalForValue(modalOptions.JOIN);
         break;
       case 982111837401:
-        alert("Set up meeting clicked!");
+        setModalForValue(modalOptions.CALENDER);
         break;
       case 54667281:
-        alert("Share meeting clicked!");
+        setModalForValue(modalOptions.SHARE);
         break;
 
       default:
@@ -36,6 +37,7 @@ const SquareBtn: React.FC<Tsquaredata> = ({
 
   return (
     <button
+      onClick={() => handleBtnClick(btnId)}
       className={`w-full p-2 hover:scale-90 hover:bg-slate-800 hover:border-2 hover:border-white transition-all duration-300 ease-in-out ${
         btnId === 278178121 && " bg-orange-500 text-white"
       } h-full flex-col text-white ${
