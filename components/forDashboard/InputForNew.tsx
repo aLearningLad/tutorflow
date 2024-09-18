@@ -15,9 +15,7 @@ const InputForNew = () => {
   if (!isDone) {
     return (
       <section className=" w-full flex flex-col items-center justify-center text-center mt-6 lg:mt-9">
-        <h2 className={` ${isDone ? "hidden" : "flex"} text-[16px]`}>
-          Invite participants by email
-        </h2>
+        <h2 className=" text-[16px]">Invite participants by email</h2>
         <div className=" w-full">
           <input
             type="text"

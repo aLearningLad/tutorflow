@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { modalOptions } from "@/lib/enums";
 import InputForNew from "./InputForNew";
+import ToJoinInput from "./ToJoinInput";
 
 const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
   // modals are not responding to if statements. The last one is a default I used for testing.
@@ -37,9 +38,11 @@ const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
     return (
       <Dialog>
         <DialogTrigger> {btnIcon}</DialogTrigger>
-        <DialogContent>
+        <DialogContent className=" w-full h-[70vh] md:w-10/12 lg:w-8/12 xl:w-6/12 flex flex-col items-center justify-center text-center bg-slate-600/50 text-white">
           <DialogHeader>
-            <DialogTitle>Setup using calender</DialogTitle>
+            <DialogTitle className=" text-2xl">
+              Setup using calender
+            </DialogTitle>
             <DialogDescription>This will open the calender</DialogDescription>
           </DialogHeader>
         </DialogContent>
@@ -51,13 +54,16 @@ const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
     return (
       <Dialog>
         <DialogTrigger> {btnIcon}</DialogTrigger>
-        <DialogContent>
+        <DialogContent className=" w-full h-[70vh] md:w-10/12 lg:w-8/12 xl:w-6/12 flex flex-col items-center justify-center text-center bg-slate-600/50 text-white">
           <DialogHeader>
-            <DialogTitle>Join an existing tut session</DialogTitle>
-            <DialogDescription>
-              This add you to a tutorial you were invited to
+            <DialogTitle className=" text-2xl">
+              Join an existing tut session
+            </DialogTitle>
+            <DialogDescription className=" text-white w-full flex justify-center text-center">
+              Paaste your invite link below
             </DialogDescription>
           </DialogHeader>
+          <ToJoinInput />
         </DialogContent>
       </Dialog>
     );
