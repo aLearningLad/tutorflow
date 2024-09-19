@@ -29,6 +29,12 @@ const ToJoinInput = () => {
       if (meetingError) {
         throw new Error(meetingError);
       }
+
+      if (meetingExists.length < 1) {
+        alert("No Meeting Found!"); //use a toaster here instead
+      }
+
+      console.log("This is the meeting data", meetingExists);
     } catch (error) {
       console.log("Error fetching meeting", error);
     }
@@ -41,8 +47,14 @@ const ToJoinInput = () => {
         placeholder="Eg. http://thetutsession.com/2%41./(6^fhdbe"
         value={meetingLink}
         onChange={(e) => setMeetingLink(e.target.value)}
+        className=" w-full h-12 bg-slate-600 text-white px-3 py-1 rounded-md"
       />
-      <button onClick={enterSession}>Go to meeting</button>
+      <button
+        className=" w-full bg-green-500 text-white rounded-md h-10 mt-5"
+        onClick={enterSession}
+      >
+        Go to meeting
+      </button>
     </div>
   );
 };
