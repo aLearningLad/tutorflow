@@ -58,19 +58,21 @@ const InputForNew = () => {
           </button>
         </div>
         <div
-          className={` h-16 px-1 overflow-auto ${
+          className={` h-16 px-1 ${
             inviteList.length > 0 ? "flex" : "hidden"
           } gap-2 w-full border-4 border-white mt-4`}
         >
-          <div className=" min-w-full h-full flex justify-center gap-3">
-            {inviteList.length > 0 &&
-              inviteList.map((person) => (
-                <PersonCard
-                  emailString={person}
-                  inviteeList={inviteList}
-                  removeInvitee={() => removeInvitee(person)}
-                />
-              ))}
+          <div className="w-max h-full flex items-center justify-start gap-3 overflow-x-auto">
+            <div className="flex gap-3 min-w-max">
+              {inviteList.length > 0 &&
+                inviteList.map((person) => (
+                  <PersonCard
+                    emailString={person}
+                    inviteeList={inviteList}
+                    removeInvitee={() => removeInvitee(person)}
+                  />
+                ))}
+            </div>
           </div>
         </div>
       </section>
