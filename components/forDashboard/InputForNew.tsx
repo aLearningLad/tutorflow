@@ -1,6 +1,7 @@
 "use client";
 
 import { ChangeEvent, useState } from "react";
+import PersonCard from "./PersonCard";
 
 const InputForNew = () => {
   const [email, setEmail] = useState<string>("");
@@ -10,6 +11,14 @@ const InputForNew = () => {
   const addToInviteList = () => {
     setInviteList((prev) => [...prev, email]);
     console.log("this is the invite list: ", inviteList);
+  };
+
+  const removeInvitee = (emailToRemove: string) => {
+    if (!inviteList.includes(emailToRemove)) return;
+
+    setInviteList(
+      inviteList.filter((anEmailString) => anEmailString !== emailToRemove)
+    );
   };
 
   // send invites to room, for each person on invite list via nodemailer, then
@@ -48,7 +57,20 @@ const InputForNew = () => {
             Finish
           </button>
         </div>
-        <div className=" h-12 w-full">invitees will appear here</div>
+        <div
+          className={` h-16 px-1 overflow-auto ${
+            inviteList.length > 0 ? "flex" : "hidden"
+          } gap-2 w-full border-4 border-white mt-4`}
+        >
+          {inviteList.length > 0 &&
+            inviteList.map((person) => (
+              <PersonCard
+                emailString={person}
+                inviteeList={inviteList}
+                removeInvitee={(person) => removeInvitee}
+              />
+            ))}
+        </div>
       </section>
     );
   }
