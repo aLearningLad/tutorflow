@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   const { inviteeList, sessionLink } = await req.json();
 
+  // handle error if either is missing
   if (!inviteeList || !sessionLink) {
     return NextResponse.json(
       {
@@ -12,4 +13,12 @@ export async function POST(req: Request) {
       { status: 400 }
     );
   }
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.PASSWORD,
+    },
+  });
 }
