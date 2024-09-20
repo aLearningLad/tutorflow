@@ -16,8 +16,8 @@ const InputForNew = () => {
   const removeInvitee = (emailToRemove: string) => {
     if (!inviteList.includes(emailToRemove)) return;
 
-    setInviteList(
-      inviteList.filter((anEmailString) => anEmailString !== emailToRemove)
+    setInviteList((prevList) =>
+      prevList.filter((anEmailString) => anEmailString !== emailToRemove)
     );
   };
 
@@ -62,14 +62,16 @@ const InputForNew = () => {
             inviteList.length > 0 ? "flex" : "hidden"
           } gap-2 w-full border-4 border-white mt-4`}
         >
-          {inviteList.length > 0 &&
-            inviteList.map((person) => (
-              <PersonCard
-                emailString={person}
-                inviteeList={inviteList}
-                removeInvitee={(person) => removeInvitee}
-              />
-            ))}
+          <div className=" min-w-full h-full flex justify-center gap-3">
+            {inviteList.length > 0 &&
+              inviteList.map((person) => (
+                <PersonCard
+                  emailString={person}
+                  inviteeList={inviteList}
+                  removeInvitee={() => removeInvitee(person)}
+                />
+              ))}
+          </div>
         </div>
       </section>
     );
