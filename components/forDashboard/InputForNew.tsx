@@ -12,6 +12,13 @@ const InputForNew = () => {
     console.log("this is the invite list: ", inviteList);
   };
 
+  // send invites to room, for each person on invite list via nodemailer, then
+  // router.push() to the tutroom
+  const handleSessionCreation = async () => {
+    try {
+    } catch (error) {}
+  };
+
   if (!isDone) {
     return (
       <section className=" w-full flex flex-col items-center justify-center text-center mt-6 lg:mt-9">
@@ -41,6 +48,7 @@ const InputForNew = () => {
             Finish
           </button>
         </div>
+        <div className=" h-12 w-full">invitees will appear here</div>
       </section>
     );
   }
