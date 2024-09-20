@@ -21,4 +21,13 @@ export async function POST(req: Request) {
       pass: process.env.PASSWORD,
     },
   });
+
+  for (const invitee of inviteeList) {
+    await transporter.sendMail({
+      from: process.env.EMAIL,
+      to: invitee,
+      subject: "Thato is keen to have you join his tut session!",
+      text: `You've been invited to an invite-only tutorial session. Join here: ${sessionLink}`,
+    });
+  }
 }
