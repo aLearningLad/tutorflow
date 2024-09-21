@@ -37,9 +37,23 @@ const InputForNew = () => {
       }
 
       // add nodemailer functionality here
+      const response = await fetch("/api/tutInvites", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          inviteList,
+          sessionLink,
+        }),
+      });
 
-      // push to tuturial room
-      router.push(`/tutroom/${sessionLink}`);
+      const data = await response.json();
+      if (response.ok) {
+        console.log("Invites sent successfully", data);
+        // push to tuturial room
+        router.push(`/tutroom/${sessionLink}`);
+      }
     } catch (error) {
       console.log("Error while creating a new tutorial session", error);
     }
