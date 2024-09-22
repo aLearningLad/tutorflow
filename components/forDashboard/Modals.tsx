@@ -10,7 +10,7 @@ import {
 import { modalOptions } from "@/lib/enums";
 import InputForNew from "./InputForNew";
 import ToJoinInput from "./ToJoinInput";
-import { Planner } from "./Planner";
+import Scheduling from "./Scheduling";
 
 const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
   // modals are not responding to if statements. The last one is a default I used for testing.
@@ -49,9 +49,15 @@ const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
               invites and coordinate who is attending
             </DialogDescription>
           </DialogHeader>
-          <section>
-            <Planner />
-          </section>
+          <Scheduling />
+          <div className=" w-full h-14 flex-col lg:flex-row flex justify-center items-center">
+            <button className=" w-full h-7 rounded-md bg-cyan-600 x text-white py-2">
+              Next
+            </button>
+            <button className=" w-full h-7 rounded-md bg-cyan-600 x text-white">
+              Previous
+            </button>
+          </div>
         </DialogContent>
       </Dialog>
     );
