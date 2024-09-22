@@ -15,7 +15,7 @@ export interface Ipersoncard {
 
 export interface ItutorStore {
   currentSlide: number;
-
   toNextSlide: () => void;
   toPreviousSlide: () => void;
+  setCurrentSlide: (to: number) => void;
 }

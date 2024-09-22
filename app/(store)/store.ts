@@ -7,6 +7,8 @@ const useStore = create<ItutorStore>()((set: any) => ({
     set((state: ItutorStore) => ({ currentSlide: state.currentSlide + 1 })),
   toPreviousSlide: () =>
     set((state: ItutorStore) => ({ currentSlide: state.currentSlide - 1 })),
+  setCurrentSlide: (to: number) =>
+    set((state: ItutorStore) => ({ currentSlide: 1 })),
 }));
 
 export default useStore;
