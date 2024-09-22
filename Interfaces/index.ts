@@ -12,3 +12,10 @@ export interface Ipersoncard {
   removeInvitee: (emailToRemove: string) => void;
   emailString: string;
 }
+
+export interface ItutorStore {
+  currentSlide: number;
+
+  toNextSlide: () => void;
+  toPreviousSlide: () => void;
+}
