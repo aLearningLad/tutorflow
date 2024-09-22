@@ -27,8 +27,8 @@ export const squaredata: Tsquaredata[] = [
   },
   {
     btnId: 54667281,
-    btnTitle: "Share meeting",
-    btnSub: "Share meet with others",
+    btnTitle: "Add a reminder",
+    btnSub: "Jot down important info",
     btnImg: "/assets/share.png",
     btnIcon: <FaShare size={20} className=" text-white" />,
   },

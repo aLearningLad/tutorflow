@@ -12,6 +12,7 @@ import InputForNew from "./InputForNew";
 import ToJoinInput from "./ToJoinInput";
 import Scheduling from "./Scheduling";
 import TraversalBtns from "./TraversalBtns";
+import ReminderInputs from "./ReminderInputs";
 
 const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
   // modals are not responding to if statements. The last one is a default I used for testing.
@@ -80,22 +81,19 @@ const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
     return (
       <Dialog>
         <DialogTrigger> {btnIcon}</DialogTrigger>
-        <DialogContent className=" bg-slate-700">
+        <DialogContent className=" bg-slate-700 text-white">
           <DialogHeader>
             <DialogTitle className=" text-xl text-white">
-              About tutorflow
+              Add reminder
             </DialogTitle>
             <DialogDescription>
               <p className=" text-[14px] text-neutral-200 ">
-                Kindly share this app with others to introduce them to the ease
-                and simplicity of tutorFlow&copy;. Once they accept, they'll
-                join you in a productive learning environment. Stay tuned for
-                our upcoming social media pages where you can connect with the
-                tutorFlow community and get the latest updates from HillSawft,
-                the team behind this app. We're excited to grow together!
+                Create a reminder for important information, or plans you might
+                have
               </p>
             </DialogDescription>
           </DialogHeader>
+          <ReminderInputs />
         </DialogContent>
       </Dialog>
     );
