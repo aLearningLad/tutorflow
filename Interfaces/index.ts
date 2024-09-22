@@ -18,4 +18,7 @@ export interface ItutorStore {
   toNextSlide: () => void;
   toPreviousSlide: () => void;
   setCurrentSlide: (to: number) => void;
+  emails: [];
+  addToEmails: (anEmail: string) => void;
+  removeFromEmails: (anEmail: string) => void;
 }

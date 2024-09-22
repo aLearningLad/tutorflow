@@ -16,7 +16,10 @@ const TraversalBtns = () => {
   );
 
   const handleFinish = async () => {
+    // collect invitees from store, send them with other details to DB
+    // move to next slide
     handleNext();
+
     alert("Fabulous, all done!");
   };
 

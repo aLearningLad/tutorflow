@@ -1,5 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import PersonCard from "./PersonCard";
+import useStore from "@/app/(store)/store";
+import { ItutorStore } from "@/Interfaces";
 
 const CalenderInvitees = () => {
   const [calenderInviteList, setCalenderInviteList] = useState<string[]>([]);
