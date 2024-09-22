@@ -80,12 +80,20 @@ const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
     return (
       <Dialog>
         <DialogTrigger> {btnIcon}</DialogTrigger>
-        <DialogContent>
+        <DialogContent className=" bg-slate-700">
           <DialogHeader>
-            <DialogTitle>Share a tutorial invite link</DialogTitle>
+            <DialogTitle className=" text-xl text-white">
+              About tutorflow
+            </DialogTitle>
             <DialogDescription>
-              You wish to share this link with others. They will be able to
-              accept and join your tutorial session
+              <p className=" text-[14px] text-neutral-200 ">
+                Kindly share this app with others to introduce them to the ease
+                and simplicity of tutorFlow&copy;. Once they accept, they'll
+                join you in a productive learning environment. Stay tuned for
+                our upcoming social media pages where you can connect with the
+                tutorFlow community and get the latest updates from HillSawft,
+                the team behind this app. We're excited to grow together!
+              </p>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
