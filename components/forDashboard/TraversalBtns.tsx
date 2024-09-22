@@ -31,7 +31,7 @@ const TraversalBtns = () => {
       const { data: calenderEntryData, error: calenderError } = await supabase
         .from("calendertuts")
         .insert({
-          authorid: nanoid(),
+          author_id: nanoid(),
           date_of_tut: "22 July 2025",
           start_time: "07:30",
           tut_id: nanoid(),
@@ -40,6 +40,7 @@ const TraversalBtns = () => {
         });
 
       if (calenderError) {
+        alert;
         throw new Error(calenderError.details);
       }
     } catch (error) {
