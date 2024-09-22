@@ -11,7 +11,7 @@ export function Planner() {
       mode="single"
       selected={date}
       onSelect={setDate}
-      className="rounded-md border bg-neutral-300 text-black"
+      className="rounded-md bg-neutral-300 text-black h-[80%] border-4 border-red-600 "
     />
   );
 }
