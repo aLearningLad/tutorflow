@@ -10,6 +10,7 @@ import {
 import { modalOptions } from "@/lib/enums";
 import InputForNew from "./InputForNew";
 import ToJoinInput from "./ToJoinInput";
+import { Planner } from "./Planner";
 
 const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
   // modals are not responding to if statements. The last one is a default I used for testing.
@@ -43,8 +44,14 @@ const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
             <DialogTitle className=" text-2xl">
               Setup using calender
             </DialogTitle>
-            <DialogDescription>This will open the calender</DialogDescription>
+            <DialogDescription>
+              Plan ahead and set a date for your upcoming tutorial session, send
+              invites and coordinate who is attending
+            </DialogDescription>
           </DialogHeader>
+          <section>
+            <Planner />
+          </section>
         </DialogContent>
       </Dialog>
     );

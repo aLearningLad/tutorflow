@@ -2,10 +2,10 @@ import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const { inviteeList, sessionLink } = await req.json();
+  const { inviteList, sessionLink } = await req.json();
 
   // handle error if either is missing
-  if (!inviteeList || !sessionLink) {
+  if (!inviteList || !sessionLink) {
     return NextResponse.json(
       {
         mmessage: "Either an invitee list or session link is missing",
@@ -19,11 +19,11 @@ export async function POST(req: Request) {
       service: "gmail",
       auth: {
         user: process.env.EMAIL,
-        pass: process.env.PASSWORD,
+        pass: process.env.GOOGLE_APP_PASSWORD,
       },
     });
 
-    for (const invitee of inviteeList) {
+    for (const invitee of inviteList) {
       await transporter.sendMail({
         from: process.env.EMAIL,
         to: invitee,
@@ -35,9 +35,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ message: "Invites have been sent!" });
   } catch (error) {
     console.log("Error while trying to send email invites: ", error);
-    return NextResponse.json(
-      { message: "Error sending email invites" },
-      { status: 500 }
-    );
+    return NextResponse.json({ message: error }, { status: 500 });
   }
 }

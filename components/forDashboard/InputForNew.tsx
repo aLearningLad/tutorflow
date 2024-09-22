@@ -53,6 +53,9 @@ const InputForNew = () => {
         console.log("Invites sent successfully", data);
         // push to tuturial room
         router.push(`/tutroom/${sessionLink}`);
+      } else {
+        console.error("Failed to send invites: ", data.message);
+        alert("Error sending invites");
       }
     } catch (error) {
       console.log("Error while creating a new tutorial session", error);
