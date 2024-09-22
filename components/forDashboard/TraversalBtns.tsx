@@ -4,6 +4,8 @@ import useStore from "@/app/(store)/store";
 import { ItutorStore } from "@/Interfaces";
 import { DialogTrigger } from "../ui/dialog";
 import CalenderInvitees from "./CalenderInvitees";
+import { createClient } from "@/lib/supabase/client";
+import { nanoid } from "nanoid";
 
 const TraversalBtns = () => {
   const handleNext = useStore((store: ItutorStore) => store.toNextSlide);
@@ -15,12 +17,40 @@ const TraversalBtns = () => {
     (store: ItutorStore) => store.setCurrentSlide
   );
 
+  const emails = useStore((store: ItutorStore) => store.emails);
+
   const handleFinish = async () => {
+    const supabase = createClient();
+
+    try {
+      if (emails.length < 1) {
+        alert("Nah fam! That email list is soooo short!");
+        return;
+      }
+
+      const { data: calenderEntryData, error: calenderError } = await supabase
+        .from("calendertuts")
+        .insert({
+          authorid: nanoid(),
+          date_of_tut: "22 July 2025",
+          start_time: "07:30",
+          tut_id: nanoid(),
+          invited_emails: emails,
+          session_link: "dummy link here",
+        });
+
+      if (calenderError) {
+        throw new Error(calenderError.details);
+      }
+    } catch (error) {
+      console.log(
+        "Error while saving calender tut details to database: ",
+        error
+      );
+    }
     // collect invitees from store, send them with other details to DB
     // move to next slide
     handleNext();
-
-    alert("Fabulous, all done!");
   };
 
   return (
@@ -43,7 +73,7 @@ const TraversalBtns = () => {
       )}
 
       {currentSlide === 3 && (
-        <div>
+        <div className=" w-full">
           <CalenderInvitees />
           <button onClick={handleFinish}>Finish</button>
         </div>

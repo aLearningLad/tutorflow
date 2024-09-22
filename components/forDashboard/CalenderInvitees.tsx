@@ -6,6 +6,11 @@ import { ItutorStore } from "@/Interfaces";
 const CalenderInvitees = () => {
   const [calenderInviteList, setCalenderInviteList] = useState<string[]>([]);
   const [email, setEmail] = useState<string>("");
+  const emails = useStore((store: ItutorStore) => store.emails);
+  const addToEmails = useStore((store: ItutorStore) => store.addToEmails);
+  const removeFromEmails = useStore(
+    (store: ItutorStore) => store.removeFromEmails
+  );
 
   const addToInviteList = () => {
     setCalenderInviteList((prev) => [...prev, email]);
@@ -36,7 +41,7 @@ const CalenderInvitees = () => {
       </div>
       <div className=" w-full flex justify-center items-center flex-col gap-3">
         <button
-          onClick={addToInviteList}
+          onClick={() => addToEmails(email)}
           className=" w-full h-12 mt-3 lg:mt-5 md:w-6/12 py-1 flex justify-center items-center text-[16px] bg-orange-400 text-white rounded-md "
         >
           Add to invite list
@@ -44,17 +49,17 @@ const CalenderInvitees = () => {
       </div>
       <div
         className={` h-16 px-1 ${
-          calenderInviteList.length > 0 ? "flex" : "hidden"
+          emails.length > 0 ? "flex" : "hidden"
         } gap-2 w-full border-4 border-white mt-4`}
       >
-        <div className="w-max h-full flex items-center justify-start gap-3 overflow-x-auto">
-          <div className="flex gap-3 min-w-max">
-            {calenderInviteList.length > 0 &&
-              calenderInviteList.map((person) => (
+        <div className=" w-full h-full flex gap-3 items-center">
+          <div className="flex gap-3 flex-nowrap overflow-auto justify-center items-center lg:gap-7">
+            {emails.length > 0 &&
+              emails.map((person) => (
                 <PersonCard
                   emailString={person}
                   inviteeList={calenderInviteList}
-                  removeInvitee={() => removeInvitee(person)}
+                  removeInvitee={() => removeFromEmails(person)}
                 />
               ))}
           </div>
