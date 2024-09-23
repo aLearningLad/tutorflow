@@ -1,5 +1,6 @@
 "use client";
 
+import { createClient } from "@/lib/supabase/client";
 import { useUser } from "@clerk/nextjs";
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
@@ -34,6 +35,19 @@ const ReminderInputs = () => {
   };
 
   const submitReminder = async () => {
+    const supabase = createClient();
+
+    const { detail, endsAt, startsAt, title } = reminderDetails;
+
+    if (
+      detail.length < 1 ||
+      endsAt.length < 3 ||
+      startsAt.length < 3 ||
+      title.length < 3
+    ) {
+      alert("Values are missing or non-descriptive");
+      return;
+    }
     try {
     } catch (error) {
       console.log("Error submitting reminder to DB: ", error);
@@ -95,7 +109,10 @@ const ReminderInputs = () => {
 
       {/* submit button  */}
       <div className=" flex justify-center items-center w-full lg:h-[10%] ">
-        <button className=" w-full h-full bg-orange-400 text-white text-lg rounded-md ">
+        <button
+          onClick={submitReminder}
+          className=" w-full h-full bg-orange-400 text-white text-lg rounded-md "
+        >
           Save reminder
         </button>
       </div>
