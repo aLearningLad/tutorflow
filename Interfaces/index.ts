@@ -21,4 +21,6 @@ export interface ItutorStore {
   emails: [];
   addToEmails: (anEmail: string) => void;
   removeFromEmails: (anEmail: string) => void;
+  remoteReminder: boolean;
+  setRemoveReminder: () => void;
 }

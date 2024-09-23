@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { auth, currentUser } from "@clerk/nextjs/server";
+import ReminderBtn from "./ReminderBtn";
 
 const ReminderList = async () => {
   const supabase = createClient();
@@ -34,6 +35,7 @@ const ReminderList = async () => {
         Create some to keep track of important tasks or discussions to be
         addressed within your tutorials
       </p>
+      <ReminderBtn />
     </div>
   );
 };
