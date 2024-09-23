@@ -12,14 +12,16 @@ const ReminderInputs = () => {
   const [authorName, setAuthorName] = useState<string>("");
   const [idValue, setIdValue] = useState<string>("");
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [authorEmailValue, setAuthorEmailValue] = useState<string>("");
 
   useEffect(() => {
     if (isLoaded && isSignedIn) {
-      console.log("This is the user: ", user.fullName);
+      console.log("This is the user: ", user);
     }
 
     if (user && user.fullName) {
       setAuthorName(user.fullName);
+      setAuthorEmailValue(user.emailAddresses[0].emailAddress);
       setIdValue(nanoid());
     }
   }, [isLoaded, isSignedIn, user]);
@@ -69,6 +71,7 @@ const ReminderInputs = () => {
           detail: detail,
           shareable_link: reminderDetails.shareableLink,
           is_private: reminderDetails.is_private,
+          author_email: authorEmailValue,
         });
 
       if (reminderSubmissionError) {
