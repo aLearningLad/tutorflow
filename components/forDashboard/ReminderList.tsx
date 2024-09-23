@@ -28,7 +28,7 @@ const ReminderList = async () => {
               <h3 className=" text-2xl text-white text-left ">
                 {reminder.title}
               </h3>
-              <DeleteReminderBtn reminderId={reminder.reminderId} />
+              <DeleteReminderBtn reminderId={reminder.reminderid} />
             </section>
 
             {/* middle section */}
