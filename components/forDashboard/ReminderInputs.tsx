@@ -8,21 +8,26 @@ import { useEffect, useState } from "react";
 const ReminderInputs = () => {
   // to get author email
   const { user, isLoaded, isSignedIn } = useUser();
+  const [authorName, setAuthorName] = useState<string>("");
 
   useEffect(() => {
     if (isLoaded && isSignedIn) {
-      console.log("This is the user: ", user);
+      console.log("This is the user: ", user.fullName);
+    }
+
+    if (user && user.fullName) {
+      setAuthorName(user.fullName);
     }
   }, [isLoaded, isSignedIn, user]);
 
   const [reminderDetails, setReminderDetails] = useState<TreminderCard>({
-    author: "", // get from clerk
+    author: authorName, // get from clerk
     reminderId: nanoid(), // call nanoid here
     title: "", // get from user input here
     startsAt: "", // get from user input here
     endsAt: "", // get from user input here
     detail: "", // get from user input here
-    shareableLink: "", // generate by attaching using nanoid to create roomId
+    shareableLink: "",
     is_private: false, // allow user to change this via selector
   });
 
@@ -49,6 +54,21 @@ const ReminderInputs = () => {
       return;
     }
     try {
+      const { data: reminderDataSubmitted, error: reminderSubmissionError } =
+        await supabase.from("reminders").insert({
+          reminderid: reminderDetails.reminderId,
+          authorid: reminderDetails.author,
+          title: title,
+          startsat: startsAt,
+          endsat: endsAt,
+          detail: detail,
+          shareable_link: reminderDetails.shareableLink,
+          is_private: reminderDetails.is_private,
+        });
+
+      if (reminderSubmissionError) {
+        throw new Error(reminderSubmissionError.message);
+      }
     } catch (error) {
       console.log("Error submitting reminder to DB: ", error);
     }
@@ -102,6 +122,18 @@ const ReminderInputs = () => {
             name="detail"
             placeholder="Add more information here"
             className=" bg-slate-600 h-[90%] lg:h-[85%] rounded-md text-white px-2 py-1 w-full focus:outline-none focus:bg-black focus:scale-95 transition duration-300 ease-in"
+            onChange={handleDetailsChange}
+          />
+        </section>
+        <section className="w-full min-h-24 border-2 border-white flex flex-col items-center text-center justify-center">
+          <label className=" text-[18px] " htmlFor="shareableLink">
+            Attach a link
+          </label>
+          <input
+            type="text"
+            name="shareableLink"
+            placeholder="Eg. 19h30"
+            className=" bg-slate-600 h-[70%] lg:h-[60%] rounded-md text-white px-2 py-1 w-full focus:outline-none focus:bg-black focus:scale-95 transition duration-300 ease-in"
             onChange={handleDetailsChange}
           />
         </section>
