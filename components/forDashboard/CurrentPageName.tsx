@@ -6,7 +6,7 @@ import { IoLocation } from "react-icons/io5";
 const CurrentPageName = () => {
   const thisPathName = usePathname().slice(1);
 
-  console.log("this path, bruv!", thisPathName);
+  // console.log("this path, bruv!", thisPathName);
 
   return (
     <span className=" h-full text-white flex justify-center items-center gap-2">

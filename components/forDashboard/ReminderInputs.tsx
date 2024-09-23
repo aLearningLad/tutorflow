@@ -1,20 +1,22 @@
 "use client";
 
+import { useUser } from "@clerk/nextjs";
+import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 
 const ReminderInputs = () => {
   // to get author email
-  useEffect(() => {
-    const getAuthor = async () => {
-      // alert("Author getting function called!");
-    };
+  const { user, isLoaded, isSignedIn } = useUser();
 
-    getAuthor();
-  }, []);
+  useEffect(() => {
+    if (isLoaded && isSignedIn) {
+      console.log("This is the user: ", user);
+    }
+  }, [isLoaded, isSignedIn, user]);
 
   const [reminderDetails, setReminderDetails] = useState<TreminderCard>({
     author: "", // get from clerk
-    reminderId: "", // call nanoid here
+    reminderId: nanoid(), // call nanoid here
     title: "", // get from user input here
     startsAt: "", // get from user input here
     endsAt: "", // get from user input here
@@ -28,13 +30,21 @@ const ReminderInputs = () => {
       ...prev,
       [e.target.name]: e.target.value,
     }));
+    console.log("The reminder details, currently: ", reminderDetails);
+  };
+
+  const submitReminder = async () => {
+    try {
+    } catch (error) {
+      console.log("Error submitting reminder to DB: ", error);
+    }
   };
 
   return (
     <div className="w-full h-[70vh] border-4 border-white flex flex-col relative gap-4">
       {/* inputs ===> scrollable */}
-      <div className="w-full overflow-auto lg:h-[90%] bg-pink-400/40 gap-y-4 flex flex-col justify-center">
-        <section className="w-full min-h-24 border-2 border-white flex flex-col items-center text-center justify-center">
+      <div className="w-full overflow-auto lg:h-[90%] bg-pink-400/40 gap-y-4 flex flex-col items-center justify-start ">
+        <section className="w-full min-h-24 flex flex-col items-center text-center justify-center">
           <label className=" text-[18px] " htmlFor="title">
             Title
           </label>
@@ -48,7 +58,7 @@ const ReminderInputs = () => {
         </section>
         <section className="w-full min-h-24 border-2 border-white flex flex-col items-center text-center justify-center">
           <label className=" text-[18px] " htmlFor="startsAt">
-            Title
+            Starts at
           </label>
           <input
             type="text"
@@ -60,7 +70,7 @@ const ReminderInputs = () => {
         </section>
         <section className="w-full min-h-24 border-2 border-white flex flex-col items-center text-center justify-center">
           <label className=" text-[18px] " htmlFor="endsAt">
-            Title
+            Ends at
           </label>
           <input
             type="text"
@@ -78,18 +88,6 @@ const ReminderInputs = () => {
             name="detail"
             placeholder="Add more information here"
             className=" bg-slate-600 h-[90%] lg:h-[85%] rounded-md text-white px-2 py-1 w-full focus:outline-none focus:bg-black focus:scale-95 transition duration-300 ease-in"
-            onChange={handleDetailsChange}
-          />
-        </section>
-        <section className="w-full min-h-24 border-2 border-white flex flex-col items-center text-center justify-center">
-          <label className=" text-[18px] " htmlFor="shareableLink">
-            Title
-          </label>
-          <input
-            type="text"
-            name="shareableLink"
-            placeholder="Eg. https://tutorflow/tutroom/room-id-comes-here"
-            className=" bg-slate-600 h-[70%] lg:h-[60%] rounded-md text-white px-2 py-1 w-full focus:outline-none focus:bg-black focus:scale-95 transition duration-300 ease-in"
             onChange={handleDetailsChange}
           />
         </section>

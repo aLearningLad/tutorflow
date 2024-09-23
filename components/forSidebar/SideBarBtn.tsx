@@ -10,12 +10,12 @@ const SideBarBtn: React.FC<TsidebarData> = ({
   linkImg,
 }) => {
   const thePathName = usePathname().slice(1);
-  console.log(
-    "We are currently on this path: ",
-    thePathName,
-    "and the link is: ",
-    link
-  );
+  // console.log(
+  //   "We are currently on this path: ",
+  //   thePathName,
+  //   "and the link is: ",
+  //   link
+  // );
 
   return (
     <li
