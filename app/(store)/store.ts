@@ -19,7 +19,7 @@ const useStore = create<ItutorStore>()((set: any) => ({
       emails: state.emails.filter((email) => email !== targetEmail),
     })),
   remoteReminder: false,
-  setRemoveReminder: () =>
+  setRemoteReminder: () =>
     set((state: ItutorStore) => ({ remoteReminder: !state.remoteReminder })),
 }));
 
