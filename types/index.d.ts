@@ -33,3 +33,7 @@ declare type Tscheduled = {
   meetingLink: string; //base url/tutroom/id (generated via nanoid)
   entryId: string; //created via nanoid, will be attached to every email invite sent via nodemailer
 };
+
+declare type Tdeletereminderbtn = {
+  reminderId: string;
+};

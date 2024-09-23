@@ -1,6 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import ReminderBtn from "./ReminderBtn";
+import { SlOptions } from "react-icons/sl";
+import DeleteReminderBtn from "./DeleteReminderBtn";
 
 const ReminderList = async () => {
   const supabase = createClient();
@@ -23,6 +25,7 @@ const ReminderList = async () => {
             {/* top section */}
             <section className=" w-full flex justify-between items-center h-[20%]">
               <h3>{reminder.title}</h3>
+              <DeleteReminderBtn reminderId={reminder.reminderId} />
             </section>
 
             {/* middle section */}
