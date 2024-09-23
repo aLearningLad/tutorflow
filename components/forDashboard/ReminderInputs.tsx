@@ -9,6 +9,8 @@ const ReminderInputs = () => {
   // to get author email
   const { user, isLoaded, isSignedIn } = useUser();
   const [authorName, setAuthorName] = useState<string>("");
+  const [idValue, setIdValue] = useState<string>("");
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   useEffect(() => {
     if (isLoaded && isSignedIn) {
@@ -17,6 +19,7 @@ const ReminderInputs = () => {
 
     if (user && user.fullName) {
       setAuthorName(user.fullName);
+      setIdValue(nanoid());
     }
   }, [isLoaded, isSignedIn, user]);
 
@@ -56,8 +59,9 @@ const ReminderInputs = () => {
     try {
       const { data: reminderDataSubmitted, error: reminderSubmissionError } =
         await supabase.from("reminders").insert({
+          author: authorName,
           reminderid: reminderDetails.reminderId,
-          authorid: reminderDetails.author,
+          authorid: nanoid(),
           title: title,
           startsat: startsAt,
           endsat: endsAt,
@@ -69,6 +73,9 @@ const ReminderInputs = () => {
       if (reminderSubmissionError) {
         throw new Error(reminderSubmissionError.message);
       }
+
+      alert("Bravo! Submitted successfully!");
+      setIsSubmitted(true); //use this state to toggle prompt to close modal
     } catch (error) {
       console.log("Error submitting reminder to DB: ", error);
     }
