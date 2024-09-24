@@ -13,9 +13,20 @@ const ScheduleComp = async () => {
     .eq("authorid", user?.id);
 
   if (remindersData && remindersData.length > 0) {
+    const mainReminderData = remindersData[0];
     return (
       <div className=" w-full h-[90vh] flex flex-col lg:flex-row ">
-        <MainReminder />
+        <MainReminder
+          author={mainReminderData.author}
+          detail={mainReminderData.detail}
+          endsAt={mainReminderData.endsat}
+          is_private={mainReminderData.is_private}
+          reminderId={mainReminderData.reminderid}
+          shareableLink={mainReminderData.shareable_link}
+          startsAt={mainReminderData.startsat}
+          title={mainReminderData.title}
+          key={mainReminderData.reminderid}
+        />
         <OtherReminders />
       </div>
     );
