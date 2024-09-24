@@ -64,7 +64,7 @@ const ReminderInputs = () => {
         await supabase.from("reminders").insert({
           author: authorName,
           reminderid: reminderDetails.reminderId,
-          authorid: nanoid(),
+          authorid: idValue,
           title: title,
           startsat: startsAt,
           endsat: endsAt,

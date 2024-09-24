@@ -11,11 +11,12 @@ const ReminderList = async () => {
   const userDetails = await currentUser();
 
   const email = userDetails?.emailAddresses[0].emailAddress;
+  const id = userDetails?.id;
 
   const { data: allReminders, error: remindersError } = await supabase
     .from("reminders")
     .select("*")
-    .eq("author_email", email);
+    .eq("authorid", id);
   console.log("These are the reminders: ", allReminders);
 
   if (allReminders && allReminders.length > 0) {

@@ -43,7 +43,7 @@ const CalenderPage = async () => {
 
                 <div className=" w-full flex justify-center">
                   <Link
-                    className=" w-full lg:w-8/12 bg-orange-400 border-4 border-orange-400 hover:bg-transparent hover:scale-95 hover:text-orange-400 transition-all duration-300 ease-in text-white rounded-md text-lg py-2"
+                    className=" w-full lg:w-8/12 bg-orange-500 border-4 border-orange-500 hover:bg-transparent hover:scale-95 hover:text-orange-400 transition-all duration-300 ease-in text-white rounded-md text-lg py-2"
                     href={`/tutroom/${tut.session_link}`}
                   >
                     Start Tut Now
