@@ -6,8 +6,12 @@ import { DialogTrigger } from "../ui/dialog";
 import CalenderInvitees from "./CalenderInvitees";
 import { createClient } from "@/lib/supabase/client";
 import { nanoid } from "nanoid";
+import { useUser } from "@clerk/nextjs";
 
 const TraversalBtns = () => {
+  const { user } = useUser();
+  const authorIdValue = user?.id;
+  // console.log("the author id here: ", authorId);
   const handleNext = useStore((store: ItutorStore) => store.toNextSlide);
   const handlePrevious = useStore(
     (store: ItutorStore) => store.toPreviousSlide
@@ -31,7 +35,7 @@ const TraversalBtns = () => {
       const { data: calenderEntryData, error: calenderError } = await supabase
         .from("calendertuts")
         .insert({
-          author_id: nanoid(),
+          author_id: authorIdValue,
           date_of_tut: "22 July 2025",
           start_time: "07:30",
           tut_id: nanoid(),
