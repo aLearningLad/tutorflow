@@ -22,7 +22,7 @@ const ReminderInputs = () => {
     if (user && user.fullName) {
       setAuthorName(user.fullName);
       setAuthorEmailValue(user.emailAddresses[0].emailAddress);
-      setIdValue(nanoid());
+      setIdValue(user.id);
     }
   }, [isLoaded, isSignedIn, user]);
 
