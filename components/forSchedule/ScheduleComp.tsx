@@ -1,5 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { currentUser } from "@clerk/nextjs/server";
+import MainReminder from "./MainReminder";
+import OtherReminders from "./OtherReminders";
 
 const ScheduleComp = async () => {
   const supabase = createClient();
@@ -11,7 +13,12 @@ const ScheduleComp = async () => {
     .eq("authorid", user?.id);
 
   if (remindersData && remindersData.length > 0) {
-    return <div>ScheduleComp</div>;
+    return (
+      <div className=" w-full h-[90vh] flex flex-col lg:flex-row ">
+        <MainReminder />
+        <OtherReminders />
+      </div>
+    );
   }
 
   if (remindersDataError) {
