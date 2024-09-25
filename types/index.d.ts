@@ -28,6 +28,10 @@ declare type TreminderCard = {
   is_private: boolean;
 };
 
+declare type Totherremindercard = {
+  allreminders: TreminderCard[];
+};
+
 // these are included within email sent as invite
 declare type Tscheduled = {
   meetingLink: string; //base url/tutroom/id (generated via nanoid)

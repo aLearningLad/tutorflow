@@ -14,6 +14,7 @@ const ScheduleComp = async () => {
 
   if (remindersData && remindersData.length > 0) {
     const mainReminderData = remindersData[0];
+    const otherReminderData = remindersData.slice(1);
     return (
       <div className=" w-full h-[90vh] flex flex-col">
         <MainReminder
@@ -27,7 +28,7 @@ const ScheduleComp = async () => {
           title={mainReminderData.title}
           key={mainReminderData.reminderid}
         />
-        <OtherReminders />
+        <OtherReminders allreminders={otherReminderData} />
       </div>
     );
   }
