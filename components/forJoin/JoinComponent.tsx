@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaLink } from "react-icons/fa";
 
@@ -12,11 +13,23 @@ const JoinComponent = () => {
   // and determine whether attendees can join it
 
   const [pastedLink, setPastedLink] = useState<string>("");
+  const router = useRouter();
+
+  const handleJoin = async () => {
+    if (pastedLink.length < 10) {
+      alert("Please paste a veritable link to join a session");
+      return;
+    }
+    try {
+      //   final step after all checks, router push to tutroom
+      router.push(pastedLink);
+    } catch (error) {}
+  };
 
   return (
     <div className=" w-full min-h-[90vh] border-4 flex-col border-white flex justify-center items-center text-white ">
       <div className=" w-full flex flex-col items-center justify-center text-center mb-2 lg:mb-5">
-        <h1 className=" text-2xl">Paste your tutorial session link below</h1>
+        <h1 className=" text-2xl">Paste your tutorial session ID below</h1>
         <p>You will be directed to the session if it is live</p>
       </div>
       <div className=" w-full md:w-10/12 lg:w-8/12 xl:w-1/2 py-5 px-1 md:px-3 lg:px-8 flex justify-center items-center ">
