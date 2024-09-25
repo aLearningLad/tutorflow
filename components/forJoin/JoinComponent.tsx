@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { FaLink } from "react-icons/fa";
 
 const JoinComponent = () => {
@@ -9,6 +10,8 @@ const JoinComponent = () => {
   // prompt user to wait a bit if the session is not yet live.
   // NB ===> requires new column in sessions table, called "is_live", will be boolean
   // and determine whether attendees can join it
+
+  const [pastedLink, setPastedLink] = useState<string>("");
 
   return (
     <div className=" w-full min-h-[90vh] border-4 flex-col border-white flex justify-center items-center text-white ">
@@ -23,8 +26,22 @@ const JoinComponent = () => {
             type="text"
             className=" w-full h-12 rounded-md bg-slate-600 focus:outline-none px-4 lg:px-7"
             placeholder="Eg. https://tutorflow.com/tutroom/tut-session-id-here"
+            value={pastedLink}
+            onChange={(e) => setPastedLink(e.target.value)}
           />
         </div>
+      </div>
+      <div className=" w-full flex justify-center items-center">
+        <button
+          disabled={pastedLink.length < 10}
+          className={`text-lg py-2 w-full md:w-6/12 lg:w-fit lg:px-5 ${
+            pastedLink.length > 10
+              ? "bg-orange-500 transition-all duration-300 ease-in"
+              : " bg-neutral-200/40 text-neutral-400 scale-95 transition-all duration-300 ease-in"
+          } rounded-md`}
+        >
+          Join Session
+        </button>
       </div>
     </div>
   );
