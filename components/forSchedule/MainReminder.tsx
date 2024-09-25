@@ -10,7 +10,7 @@ const MainReminder: React.FC<TreminderCard> = ({
   startsAt,
   title,
 }) => {
-  return <div>{title}</div>;
+  return <div className=" w-full h-[60%]">{title}</div>;
 };
 
 export default MainReminder;
