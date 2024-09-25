@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import { GiDiceTarget } from "react-icons/gi";
 
 const MainReminder: React.FC<TreminderCard> = ({
   author,
@@ -27,7 +27,8 @@ const MainReminder: React.FC<TreminderCard> = ({
               <p className="text-[10px] ">from</p>
               <h2>{startsAt}</h2>
             </span>
-            <span className="min-w-[30%] max-w-[50%] flex items-center justify-center">
+            <span className="min-w-[30%] max-w-[50%] flex items-center justify-center bg-neutral-200/30 p-2 rounded-md gap-2 ">
+              <GiDiceTarget size={20} />
               <p className=" text-xl  overflow-auto flex ">{title}</p>
             </span>
             <span className=" p-2 bg-neutral-100/30 rounded-md ">
