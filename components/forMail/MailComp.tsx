@@ -3,8 +3,13 @@ import React from "react";
 const MailComp = () => {
   return (
     <div className=" h-[90vh] w-full border-4 border-white flex flex-col itemsc justify-center ">
-      <section className=" w-full h-[90%] border-4 border-white ">
-        {/* inputs come here */}
+      <section className=" w-full h-[90%] border-4 border-white flex flex-col lg:flex-row ">
+        {/* email contents */}
+        <textarea
+          name=""
+          id=""
+          className=" w-full h-[80%] bg-slate-600 rounded-lg "
+        />
       </section>
 
       <section className=" w-full h-[10%] flex justify-center items-center p-1 md:p-2">
