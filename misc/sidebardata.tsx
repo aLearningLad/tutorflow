@@ -31,8 +31,8 @@ export const sidebardata: TsidebarData[] = [
   },
   {
     linkId: 4331284,
-    label: "Chats",
-    link: "/chats",
+    label: "Mail",
+    link: "/mail",
     linkImg: <IoChatbubbleEllipses className="" size={18} />,
   },
 ];
