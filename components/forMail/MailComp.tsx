@@ -13,6 +13,11 @@ const MailComp = () => {
       return;
     }
 
+    if (recipientList.includes(emailContents)) {
+      alert("You're attempting to add a duplicate!");
+      return;
+    }
+
     setRecipientList((prev) => [...prev, emailContents]);
   };
 
