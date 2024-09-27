@@ -16,6 +16,12 @@ const MailComp = () => {
     setRecipientList((prev) => [...prev, emailContents]);
   };
 
+  const handleRemove = (stringToRemove: string) => {
+    setRecipientList(
+      recipientList.filter((anEmail) => anEmail !== stringToRemove)
+    );
+  };
+
   return (
     <div className=" h-[90vh] w-full border-4 border-white flex flex-col itemsc justify-center ">
       <section className=" w-full h-[90%] border-4 border-white flex flex-col lg:flex-row ">
@@ -51,6 +57,7 @@ const MailComp = () => {
                     key={person}
                     index={index as number}
                     emailString={person}
+                    handleToRemove={handleRemove}
                   />
                 ))}
               </div>

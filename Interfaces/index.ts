@@ -28,4 +28,5 @@ export interface ItutorStore {
 export interface Irecipienttab {
   index: string | number;
   emailString: string;
+  handleToRemove: (emailToRemove: string) => void;
 }
