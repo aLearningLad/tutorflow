@@ -28,13 +28,14 @@ const MailComp = () => {
   };
 
   return (
-    <div className=" h-[90vh] w-full border-4 border-white flex flex-col itemsc justify-center ">
-      <section className=" w-full h-[90%] border-4 border-white flex flex-col lg:flex-row ">
+    <div className=" h-[90vh] w-full flex flex-col itemsc justify-center ">
+      <section className=" w-full h-[90%] p-1 md:p-3 lg:p-5 flex flex-col lg:flex-row ">
         {/* email contents */}
         <textarea
           name=""
           id=""
-          className=" w-full lg:w-7/12 h-[80%] bg-slate-600 rounded-lg "
+          className=" w-full lg:w-7/12 h-[80%] focus:scale-95 transition-all duration-500 ease-in-out bg-slate-600 rounded-lg p-4 md:p-7 lg:p-12 text-white text-start "
+          placeholder="Type your message here"
         />
 
         {/* add recipients */}
