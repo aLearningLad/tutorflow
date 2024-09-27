@@ -46,8 +46,12 @@ const MailComp = () => {
             {/* will contain recipientList */}
             {recipientList.length > 0 ? (
               <div className=" p-2 lg:p-3 flex flex-col items-center text-center">
-                {recipientList.map((person) => (
-                  <RecipientTab />
+                {recipientList.map((person, index) => (
+                  <RecipientTab
+                    key={person}
+                    index={index}
+                    emailString={person}
+                  />
                 ))}
               </div>
             ) : (

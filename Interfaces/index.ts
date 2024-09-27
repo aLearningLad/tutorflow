@@ -25,4 +25,7 @@ export interface ItutorStore {
   setRemoteReminder: () => void;
 }
 
-export interface Irecipienttab {}
+export interface Irecipienttab {
+  index: string | number;
+  emailString: string;
+}
