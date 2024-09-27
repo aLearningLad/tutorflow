@@ -24,3 +24,5 @@ export interface ItutorStore {
   remoteReminder: boolean;
   setRemoteReminder: () => void;
 }
+
+export interface Irecipienttab {}
