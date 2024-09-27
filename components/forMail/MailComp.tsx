@@ -42,14 +42,14 @@ const MailComp = () => {
           >
             Add
           </button>
-          <div className=" w-full h-[30%] bg-neutral-50/20 rounded-lg mt-5 ">
+          <div className=" w-full h-[30%] bg-neutral-50/20 rounded-lg mt-5 overflow-auto ">
             {/* will contain recipientList */}
             {recipientList.length > 0 ? (
               <div className=" p-2 lg:p-3 flex flex-col items-center text-center">
                 {recipientList.map((person, index) => (
                   <RecipientTab
                     key={person}
-                    index={index}
+                    index={index as number}
                     emailString={person}
                   />
                 ))}
