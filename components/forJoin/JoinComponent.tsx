@@ -34,10 +34,10 @@ const JoinComponent = () => {
       </div>
       <div className=" w-full md:w-10/12 lg:w-8/12 xl:w-1/2 py-5 px-1 md:px-3 lg:px-8 flex justify-center items-center ">
         <div className=" w-full flex items-center justify-center gap-2 ">
-          <FaLink size={18} className="text-white" />
+          <FaLink size={18} className="text-white lg:flex hidden" />
           <input
             type="text"
-            className=" w-full h-12 rounded-md bg-slate-600 focus:outline-none px-4 lg:px-7"
+            className=" w-full h-20 lg:h-12 rounded-md bg-slate-600 focus:outline-none px-4 lg:px-7"
             placeholder="Eg. https://tutorflow.com/tutroom/tut-session-id-here"
             value={pastedLink}
             onChange={(e) => setPastedLink(e.target.value)}
@@ -47,7 +47,7 @@ const JoinComponent = () => {
       <div className=" w-full flex justify-center items-center">
         <button
           disabled={pastedLink.length < 10}
-          className={`text-lg py-2 w-full md:w-6/12 lg:w-fit lg:px-5 ${
+          className={`text-lg h-16 lg:h-10 py-2 w-full md:w-6/12 lg:w-fit lg:px-5 ${
             pastedLink.length > 10
               ? "bg-orange-500 transition-all duration-300 ease-in"
               : " bg-neutral-200/40 text-neutral-400 scale-95 transition-all duration-300 ease-in"

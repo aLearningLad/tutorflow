@@ -16,7 +16,7 @@ const ScheduleComp = async () => {
     const mainReminderData = remindersData[0];
     const otherReminderData = remindersData.slice(1);
     return (
-      <div className=" w-full h-[90vh] flex flex-col">
+      <div className=" w-full h-screen lg:h-[90vh] flex flex-col">
         <MainReminder
           author={mainReminderData.author}
           detail={mainReminderData.detail}

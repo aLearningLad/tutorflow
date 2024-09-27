@@ -14,7 +14,7 @@ const MainReminder: React.FC<TreminderCard> = ({
   return (
     <div className=" w-full h-[60%] flex p-1 md:p-2 lg:p-5 lg:gap-5 ">
       <section className=" w-7/12 lg:flex hidden ">
-        {/* left side */}
+        {/* left side, only visible on large */}
         <div className=" h-full flex w-full bg-neutral-200/20 rounded-lg ">
           image comes here
         </div>
@@ -50,7 +50,7 @@ const MainReminder: React.FC<TreminderCard> = ({
             <p className=" text-[18px] ">{author}</p>
           </span>
         </section>
-        <section className=" w-full overflow-auto rounded-md text-ellipsis bg-slate-100/30 py-2 px-4 ">
+        <section className=" w-full h-full lg:h-fit overflow-auto rounded-md text-ellipsis bg-slate-100/30 py-2 px-4 ">
           <p>{detail}</p>
         </section>
       </section>
