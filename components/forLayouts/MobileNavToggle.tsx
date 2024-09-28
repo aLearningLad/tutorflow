@@ -29,10 +29,16 @@ const MobileNavToggle = () => {
           <CgMenuGridR className=" text-white" size={30} />
         </button>
       </DialogTrigger>
-      <DialogContent className=" w-full h-screen flex flex-col items-center justify-center text-center bg-slate-900 text-white">
+      <DialogContent className=" w-full h-screen flex flex-col items-center justify-center text-center bg-slate-900 text-white px-3">
         {sidebardata.map((btn) => (
-          <button>{btn.label}</button>
+          <button className=" w-full h-20 mb-4 bg-blue-600 odd:bg-orange-500 rounded-md text-xl">
+            {btn.label}
+          </button>
         ))}
+
+        <DialogTrigger className=" bg-white w-full flex justify-center items-center h-16 rounded-md text-black text-lg ">
+          Close
+        </DialogTrigger>
       </DialogContent>
     </Dialog>
   );
