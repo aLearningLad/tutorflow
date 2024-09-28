@@ -28,7 +28,7 @@ const MailComp = () => {
   };
 
   return (
-    <div className=" h-[90vh] w-full flex flex-col itemsc justify-center ">
+    <div className=" h-[110vh] lg:h-[90vh] pb-16 lg:pb-1 w-full flex flex-col items-center justify-center ">
       <section className=" w-full h-[90%] p-1 md:p-3 lg:p-5 flex flex-col lg:flex-row ">
         {/* email contents */}
         <textarea
@@ -39,7 +39,7 @@ const MailComp = () => {
         />
 
         {/* add recipients */}
-        <div className=" w-5/12 h-full flex flex-col justify-center items-center text-center px-1 md:px-5 lg:px-12">
+        <div className=" w-full lg:w-5/12 h-full flex flex-col justify-center items-center text-center px-1 md:px-5 lg:px-12">
           <h2 className=" text-xl text-white">Add mail recipients</h2>
           <input
             type="text"
