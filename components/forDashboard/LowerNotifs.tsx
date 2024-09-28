@@ -12,7 +12,7 @@ const LowerNotifs = () => {
       <section className=" w-full min-h-[85%] flex flex-col gap-3 overflow-auto p-2 ">
         {falseNotifs.map((notif) => (
           <div
-            className={`border-2 hover:scale-95 cursor-pointer transition-all duration-300 ease-in min-h-12 bg-slate-600/40 border-neutral-300/40 rounded-md p-1 flex justify-between items-center`}
+            className={`border-2 hover:scale-95 cursor-pointer transition-all duration-300 ease-in min-h-14 lg:min-h-12 bg-slate-600/40 border-neutral-300/40 rounded-md p-1 flex justify-between items-center`}
           >
             <div className=" w-3/12 h-full flex justify-center items-center">
               {/* add a state here, render open envelope if message is viewed */}
@@ -21,7 +21,7 @@ const LowerNotifs = () => {
             <div>
               <p className=" text-[12px] ">New meeting ID has been generated</p>
             </div>
-            <button className=" w-fit px-7 h-full bg-blue-600 text-white rounded-[4px] text-[14px] ">
+            <button className=" w-fit px-3 lg:px-7 min-h-10 lg:min-h-8 bg-blue-600 text-white rounded-[4px] text-[14px] ">
               Share link
             </button>
           </div>

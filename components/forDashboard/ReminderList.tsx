@@ -21,7 +21,7 @@ const ReminderList = async () => {
 
   if (allReminders && allReminders.length > 0) {
     return (
-      <div className=" w-full h-[50vh] overflow-auto flex flex-col gap-5 lg:gap-7">
+      <div className=" w-full h-fit lg:h-[50vh] overflow-auto flex flex-col gap-5 lg:gap-7">
         {allReminders.map((reminder) => (
           <div className=" w-full min-h-60 rounded-lg bg-slate-700 p-5 flex flex-col px-1 md:px-2 lg:px-3 py-2 lg:py-3">
             {/* top section */}

@@ -9,7 +9,7 @@ const Sidebar: React.FC<Isidebar> = () => {
       <section className=" w-2/12 lg:w-full hidden lg:flex justify-center items-center h-full lg:h-1/6 xl:h-[13%] bg-neutral-500/40">
         {/* app logo here */}
       </section>
-      <section className=" w-full h-full flex justify-center items-center">
+      <section className=" w-full h-full flex lg:hidden justify-center items-center">
         {/* only on small screens */}
         <button className=" w-fit p-2 h-fit rounded-md bg-orange-500 active:bg-blue-600 active:scale-95 transition-all duration-300 ease-in">
           <CgMenuGridR className=" text-white" size={30} />
