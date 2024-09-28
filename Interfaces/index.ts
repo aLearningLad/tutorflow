@@ -23,6 +23,8 @@ export interface ItutorStore {
   removeFromEmails: (anEmail: string) => void;
   remoteReminder: boolean;
   setRemoteReminder: () => void;
+  isNavOpen: boolean;
+  setIsNavOpen: () => void;
 }
 
 export interface Irecipienttab {

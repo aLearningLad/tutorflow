@@ -21,6 +21,10 @@ const useStore = create<ItutorStore>()((set: any) => ({
   remoteReminder: false,
   setRemoteReminder: () =>
     set((state: ItutorStore) => ({ remoteReminder: !state.remoteReminder })),
+
+  isNavOpen: false,
+  setIsNavOpen: () =>
+    set((state: ItutorStore) => ({ isNavOpen: !state.isNavOpen })),
 }));
 
 export default useStore;

@@ -2,6 +2,7 @@ import { Isidebar } from "@/Interfaces";
 import { sidebardata } from "@/misc/sidebardata";
 import SideBarBtn from "../forSidebar/SideBarBtn";
 import { CgMenuGridR } from "react-icons/cg";
+import MobileNavToggle from "../forLayouts/MobileNavToggle";
 
 const Sidebar: React.FC<Isidebar> = () => {
   return (
@@ -11,9 +12,7 @@ const Sidebar: React.FC<Isidebar> = () => {
       </section>
       <section className=" w-full h-full flex lg:hidden justify-center items-center">
         {/* only on small screens */}
-        <button className=" w-fit p-2 h-fit rounded-md bg-orange-500 active:bg-blue-600 active:scale-95 transition-all duration-300 ease-in">
-          <CgMenuGridR className=" text-white" size={30} />
-        </button>
+        <MobileNavToggle />
       </section>
       <section className="w-full h-full lg:h-5/6 flex flex-row lg:flex-col">
         {/* only on desktop */}
