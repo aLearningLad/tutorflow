@@ -15,9 +15,6 @@ import TraversalBtns from "./TraversalBtns";
 import ReminderInputs from "./ReminderInputs";
 
 const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
-  // modals are not responding to if statements. The last one is a default I used for testing.
-  // find a fix, champ
-
   if (modalFor === modalOptions.NEW) {
     return (
       <Dialog>
