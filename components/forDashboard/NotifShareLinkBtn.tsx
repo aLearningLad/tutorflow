@@ -1,5 +1,7 @@
 "use client";
 
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+
 const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
   author_id,
   date_of_tut,
@@ -50,9 +52,22 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
   };
 
   return (
-    <button className=" w-fit px-3 lg:px-7 min-h-10 lg:min-h-8 bg-blue-600 text-white rounded-[4px] text-[14px] ">
-      Send reminders
-    </button>
+    <Dialog>
+      <DialogTrigger>
+        <button className=" w-fit px-3 lg:px-7 min-h-10 lg:min-h-8 bg-blue-600 text-white rounded-[4px] text-[14px] ">
+          Send reminder
+        </button>
+      </DialogTrigger>
+      <DialogContent className=" bg-slate-700 text-white h-full w-full lg:h-[85vh] flex flex-col items-center text-center justify-center border-none">
+        <h1>
+          You're about to send a reminder email to the people listed below
+        </h1>
+        <div className=" bg-slate-900 w-full h-[65%] text-white rounded-md p-3 lg:p-5 overflow-auto flex gap-2 md:gap-4 last:gap-5 "></div>
+        <button className=" w-full min-h-14 text-lg bg-orange-500 text-white rounded-md hover:bg-white hover:text-black transition-all duration-300 ease-in hover:scale-95 ">
+          I Understand, Send The Reminder Emails
+        </button>
+      </DialogContent>
+    </Dialog>
   );
 };
 
