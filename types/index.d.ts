@@ -41,3 +41,12 @@ declare type Tscheduled = {
 declare type Tdeletereminderbtn = {
   reminderId: string;
 };
+
+declare type Tcalendertutdata = {
+  author_id: string;
+  date_of_tut: string;
+  start_time: string;
+  tut_id: string;
+  invited_emails: string[];
+  session_link: string;
+};

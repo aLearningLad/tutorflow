@@ -14,8 +14,6 @@ const LowerNotifs = async () => {
 
   console.log("calender tuts data here: ", calenderTutsData);
 
-  const falseNotifs = [1, 2, 3, 4, 5, 6, 7];
-
   if (calenderTutsDataError) {
     return (
       <div className="w-full h-[35%] flex justify-center flex-col text-center py-2 px-1 lg:px-7">
@@ -40,9 +38,10 @@ const LowerNotifs = async () => {
           <h1 className=" text-[20px]">Notifications</h1>
         </header>
         <section className=" w-full min-h-[85%] flex flex-col gap-3 overflow-auto p-2 ">
-          {falseNotifs.map((notif) => (
+          {calenderTutsData.map((notif: Tcalendertutdata) => (
             <div
               className={`border-2 hover:scale-95 cursor-pointer transition-all duration-300 ease-in min-h-14 lg:min-h-12 bg-slate-600/40 border-neutral-300/40 rounded-md p-1 flex justify-between items-center`}
+              key={notif.tut_id}
             >
               <div className=" w-3/12 h-full flex justify-center items-center">
                 {/* add a state here, render open envelope if message is viewed */}
@@ -50,7 +49,7 @@ const LowerNotifs = async () => {
               </div>
               <div>
                 <p className=" text-[12px] ">
-                  New meeting ID has been generated
+                  Tut scheduled for {notif.date_of_tut}, from {notif.start_time}
                 </p>
               </div>
               <button className=" w-fit px-3 lg:px-7 min-h-10 lg:min-h-8 bg-blue-600 text-white rounded-[4px] text-[14px] ">
