@@ -41,5 +41,19 @@ export async function POST(req: Request) {
         text: `Hi there! Just a quick reminder that you have a tutorial session with Thato. It is scheduled for ${date_of_tut}, and will commence at ${start_time}`,
       });
     }
-  } catch (error) {}
+
+    return NextResponse.json({
+      message: "Reminders have been sent",
+    });
+  } catch (error) {
+    console.log("Error while sending reminders: ", error);
+    return NextResponse.json(
+      {
+        message: error,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
 }
