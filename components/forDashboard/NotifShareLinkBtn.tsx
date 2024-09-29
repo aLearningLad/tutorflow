@@ -51,7 +51,7 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
 
   return (
     <button className=" w-fit px-3 lg:px-7 min-h-10 lg:min-h-8 bg-blue-600 text-white rounded-[4px] text-[14px] ">
-      Share link
+      Send reminders
     </button>
   );
 };
