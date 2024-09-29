@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import InvitedConfirmTab from "./InvitedConfirmTab";
 
 const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
   author_id,
@@ -10,6 +12,9 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
   start_time,
   tut_id,
 }) => {
+  // state to hold official email reminder list
+  const [sendlist, setSendlist] = useState<string[]>(invited_emails);
+
   const handleShare = async () => {
     try {
       //   error checks for missing values
@@ -51,6 +56,12 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
     }
   };
 
+  const handleToRemove = (emailToRemove: string) => {
+    setSendlist((prevList) =>
+      prevList.filter((anEmailString) => anEmailString !== emailToRemove)
+    );
+  };
+
   return (
     <Dialog>
       <DialogTrigger>
@@ -62,7 +73,15 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
         <h1>
           You're about to send a reminder email to the people listed below
         </h1>
-        <div className=" bg-slate-900 w-full h-[65%] text-white rounded-md p-3 lg:p-5 overflow-auto flex gap-2 md:gap-4 last:gap-5 "></div>
+        <div className=" bg-slate-900 w-full h-[65%] text-white rounded-md p-3 lg:p-5 overflow-auto flex flex-col gap-2 md:gap-4 last:gap-5 ">
+          {invited_emails.map((btn) => (
+            <InvitedConfirmTab
+              emailString={btn}
+              handleToRemove={handleToRemove}
+              index={btn}
+            />
+          ))}
+        </div>
         <button className=" w-full min-h-14 text-lg bg-orange-500 text-white rounded-md hover:bg-white hover:text-black transition-all duration-300 ease-in hover:scale-95 ">
           I Understand, Send The Reminder Emails
         </button>
