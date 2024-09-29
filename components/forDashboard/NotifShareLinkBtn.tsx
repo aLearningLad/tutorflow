@@ -22,7 +22,7 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
         !author_id ||
         !date_of_tut ||
         !invited_emails ||
-        invited_emails.length < 1 ||
+        sendlist.length < 1 ||
         !session_link
       ) {
         alert("Something went wrong. Please contact the developer");
@@ -74,15 +74,18 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
           You're about to send a reminder email to the people listed below
         </h1>
         <div className=" bg-slate-900 w-full h-[65%] text-white rounded-md p-3 lg:p-5 overflow-auto flex flex-col gap-2 md:gap-4 last:gap-5 ">
-          {invited_emails.map((btn) => (
+          {sendlist.map((btn) => (
             <InvitedConfirmTab
               emailString={btn}
-              handleToRemove={handleToRemove}
+              handleToRemove={() => handleToRemove(btn)}
               index={btn}
             />
           ))}
         </div>
-        <button className=" w-full min-h-14 text-lg bg-orange-500 text-white rounded-md hover:bg-white hover:text-black transition-all duration-300 ease-in hover:scale-95 ">
+        <button
+          onClick={handleShare}
+          className=" w-full min-h-14 text-lg bg-orange-500 text-white rounded-md hover:bg-white hover:text-black transition-all duration-300 ease-in hover:scale-95 "
+        >
           I Understand, Send The Reminder Emails
         </button>
       </DialogContent>
