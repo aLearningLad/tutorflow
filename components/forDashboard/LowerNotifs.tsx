@@ -3,6 +3,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import React from "react";
 import { FaEnvelope } from "react-icons/fa";
 import { RiMessage3Fill } from "react-icons/ri";
+import NotifShareLinkBtn from "./NotifShareLinkBtn";
 
 const LowerNotifs = async () => {
   const supabase = createClient();
@@ -52,9 +53,15 @@ const LowerNotifs = async () => {
                   Tut scheduled for {notif.date_of_tut}, from {notif.start_time}
                 </p>
               </div>
-              <button className=" w-fit px-3 lg:px-7 min-h-10 lg:min-h-8 bg-blue-600 text-white rounded-[4px] text-[14px] ">
-                Share link
-              </button>
+              <NotifShareLinkBtn
+                author_id={notif.author_id}
+                date_of_tut={notif.date_of_tut}
+                invited_emails={notif.invited_emails}
+                session_link={notif.session_link}
+                start_time={notif.start_time}
+                tut_id={notif.tut_id}
+                key={notif.tut_id}
+              />
             </div>
           ))}
         </section>

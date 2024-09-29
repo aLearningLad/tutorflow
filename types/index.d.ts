@@ -50,3 +50,10 @@ declare type Tcalendertutdata = {
   invited_emails: string[];
   session_link: string;
 };
+
+declare type Tflowcontacts = {
+  contact_id: string; // nanoid()
+  created_by: string; //google ID of creator
+  contact_email: string; //email address to be saved;
+  contact_name: string;
+};
