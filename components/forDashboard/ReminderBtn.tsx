@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ReminderInputs from "./ReminderInputs";
-import { FaPlusSquare, FaShare } from "react-icons/fa";
+import { FaPlusSquare } from "react-icons/fa";
 
 const ReminderBtn = () => {
   const setRemoteReminder = useStore(
@@ -27,7 +27,7 @@ const ReminderBtn = () => {
         onClick={setRemoteReminder}
       >
         {/* <FaShare size={20} className=" text-white" /> */}
-        <span className=" w-full hover:scale-95 hover:bg-transparent border-4 border-orange-400 transition-all duration-300 ease-in-out md:w-10/12 lg:w-8/12 xl:w-6/12 flex justify-center items-center gap-3 bg-orange-400 text-white rounded-md py-2">
+        <span className=" w-full hover:scale-95 hover:bg-transparent border-4 border-orange-500 transition-all duration-300 ease-in-out md:w-10/12 lg:w-8/12 xl:w-6/12 flex justify-center items-center gap-3 bg-orange-500 text-white rounded-md py-2">
           <p className=" text-lg">New Reminder</p>
           <FaPlusSquare size={20} className=" text-white " />
         </span>

@@ -32,9 +32,10 @@ export async function POST(req: Request) {
       });
     }
 
+    console.log("Invites sent successfully");
     return NextResponse.json({ message: "Invites have been sent!" });
-  } catch (error) {
+  } catch (error: any) {
     console.log("Error while trying to send email invites: ", error);
-    return NextResponse.json({ message: error }, { status: 500 });
+    return NextResponse.json({ message: error.message }, { status: 500 });
   }
 }

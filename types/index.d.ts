@@ -49,6 +49,7 @@ declare type Tcalendertutdata = {
   tut_id: string;
   invited_emails: string[];
   session_link: string;
+  is_reminded: boolean;
 };
 
 declare type Tflowcontacts = {

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import InvitedConfirmTab from "./InvitedConfirmTab";
+import { createClient } from "@/lib/supabase/client";
 
 const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
   author_id,
@@ -29,8 +30,15 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
         return;
       }
 
+      // adjust is_reminded status in DB table
+      const supabase = createClient();
+      const { data: updatedStatus, error: updateError } = await supabase
+        .from("calendertuts")
+        .update({ is_reminded: true })
+        .select();
+
       // API call to nodemailer backend
-      const response = await fetch("/api/sendMail", {
+      const response = await fetch("/api/reminders", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,10 +54,12 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
       });
 
       const data = await response.json();
-      if (data.ok) {
+      if (response.ok) {
         console.log("Link shared successfully");
         alert("Link shared!");
       } else {
+        console.error("Failed to send reminders: ", data.message);
+        alert("Unable to send reminders");
       }
     } catch (error) {
       console.log("Error sharing link: ", error);
@@ -82,12 +92,11 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
             />
           ))}
         </div>
-        <button
-          onClick={handleShare}
-          className=" w-full min-h-14 text-lg bg-orange-500 text-white rounded-md hover:bg-white hover:text-black transition-all duration-300 ease-in hover:scale-95 "
-        >
+        {/* <DialogTrigger className=" w-full min-h-14 text-lg bg-orange-500 text-white rounded-md hover:bg-white hover:text-black transition-all duration-300 ease-in hover:scale-95 "> */}
+        <button onClick={handleShare}>
           I Understand, Send The Reminder Emails
         </button>
+        {/* </DialogTrigger> */}
       </DialogContent>
     </Dialog>
   );
