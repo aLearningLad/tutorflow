@@ -15,6 +15,12 @@ const LowerNotifs = async () => {
 
   console.log("calender tuts data here: ", calenderTutsData);
 
+  if (!currentUserData) {
+    return (
+      <div className="w-full h-[35%] flex justify-center flex-col text-center py-2 px-1 lg:px-7"></div>
+    );
+  }
+
   if (calenderTutsDataError) {
     return (
       <div className="w-full h-[35%] flex justify-center flex-col text-center py-2 px-1 lg:px-7">
