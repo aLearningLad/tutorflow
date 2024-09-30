@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import InvitedConfirmTab from "./InvitedConfirmTab";
 import { createClient } from "@/lib/supabase/client";
 import { FaTrashAlt } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
   author_id,
@@ -17,6 +18,8 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
 }) => {
   // state to hold official email reminder list
   const [sendlist, setSendlist] = useState<string[]>(invited_emails);
+
+  const router = useRouter();
 
   const handleShare = async () => {
     try {
@@ -59,6 +62,7 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
       const data = await response.json();
       if (response.ok) {
         console.log("Link shared successfully");
+        router.refresh();
         alert("Link shared!");
       } else {
         console.error("Failed to send reminders: ", data.message);
@@ -77,10 +81,27 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
 
   const handleDelete = async () => {
     if (!tut_id) {
+      alert("Something went wrong. Please contact the developer");
+      return;
     }
 
     try {
-    } catch (error) {}
+      const supabase = createClient();
+      const { error: deletionError } = await supabase
+        .from("calendertuts")
+        .delete()
+        .eq("tut_id", tut_id);
+
+      // throw the error, if any
+      if (deletionError) {
+        alert("Something went wrong. Please contact the developer.");
+        throw new Error(deletionError.message);
+      }
+
+      alert("Notification deleted successfully");
+    } catch (error) {
+      console.log("Error while deleting notification: ", error);
+    }
   };
 
   return (
@@ -96,25 +117,43 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
           </button>
         )}
       </DialogTrigger>
-      <DialogContent className=" bg-slate-700 text-white h-full w-full lg:h-[85vh] flex flex-col items-center text-center justify-center border-none">
-        <h1>
-          You're about to send a reminder email to the people listed below
-        </h1>
-        <div className=" bg-slate-900 w-full h-[65%] text-white rounded-md p-3 lg:p-5 overflow-auto flex flex-col gap-2 md:gap-4 last:gap-5 ">
-          {sendlist.map((btn) => (
-            <InvitedConfirmTab
-              emailString={btn}
-              handleToRemove={() => handleToRemove(btn)}
-              index={btn}
-            />
-          ))}
-        </div>
-        {/* <DialogTrigger className=" w-full min-h-14 text-lg bg-orange-500 text-white rounded-md hover:bg-white hover:text-black transition-all duration-300 ease-in hover:scale-95 "> */}
-        <button onClick={handleShare}>
-          I Understand, Send The Reminder Emails
-        </button>
-        {/* </DialogTrigger> */}
-      </DialogContent>
+      {is_reminded ? (
+        <DialogContent className=" bg-slate-700 text-white h-full w-full lg:h-[85vh] flex flex-col items-center text-center justify-center border-none">
+          <h1 className=" text-lg text-white">
+            You're about to delete this notifciation.
+          </h1>
+          <p>You've already sent out reminder emails to participants</p>
+
+          <div className=" w-full mt-12 md:mt-14 flex flex-col gap-5 text-center justify-center items-center md:gap-7">
+            <button className=" w-full hover:scale-95 transition-all duration-300 hover:bg-white hover:text-black h-12 rounded-md flex justify-center items-center text-lg bg-red-600 text-white ">
+              Delete
+            </button>
+            <DialogTrigger className=" w-full hover:scale-95 transition-all duration-300 hover:bg-white hover:text-black h-12 rounded-md bg-blue-600 text-white flex justify-center items-center">
+              <button>Cancel</button>
+            </DialogTrigger>
+          </div>
+        </DialogContent>
+      ) : (
+        <DialogContent className=" bg-slate-700 text-white h-full w-full lg:h-[85vh] flex flex-col items-center text-center justify-center border-none">
+          <h1 className=" text-lg text-white">
+            You're about to send a reminder email to the people listed below
+          </h1>
+          <div className=" bg-slate-900 w-full h-[65%] text-white rounded-md p-3 lg:p-5 overflow-auto flex flex-col gap-2 md:gap-4 last:gap-5 ">
+            {sendlist.map((btn) => (
+              <InvitedConfirmTab
+                emailString={btn}
+                handleToRemove={() => handleToRemove(btn)}
+                index={btn}
+              />
+            ))}
+          </div>
+          {/* <DialogTrigger className=" w-full min-h-14 text-lg bg-orange-500 text-white rounded-md hover:bg-white hover:text-black transition-all duration-300 ease-in hover:scale-95 "> */}
+          <button onClick={handleShare}>
+            I Understand, Send The Reminder Emails
+          </button>
+          {/* </DialogTrigger> */}
+        </DialogContent>
+      )}
     </Dialog>
   );
 };
