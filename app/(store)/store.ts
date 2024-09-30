@@ -25,6 +25,10 @@ const useStore = create<ItutorStore>()((set: any) => ({
   isNavOpen: false,
   setIsNavOpen: () =>
     set((state: ItutorStore) => ({ isNavOpen: !state.isNavOpen })),
+
+  notifCount: 0,
+  setNotifCount: (countFromDB: number) =>
+    set((state: ItutorStore) => ({ notifCount: countFromDB })),
 }));
 
 export default useStore;

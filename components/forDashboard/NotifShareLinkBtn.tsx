@@ -59,6 +59,9 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
         }),
       });
 
+      // show loading
+      alert("Sending emails...");
+
       const data = await response.json();
       if (response.ok) {
         console.log("Link shared successfully");
@@ -98,6 +101,7 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
         throw new Error(deletionError.message);
       }
 
+      router.refresh();
       alert("Notification deleted successfully");
     } catch (error) {
       console.log("Error while deleting notification: ", error);
@@ -108,24 +112,29 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
     <Dialog>
       <DialogTrigger>
         {is_reminded ? (
-          <button className=" w-fit px-3 min-h-10 lg:min-h-8 bg-slate-700 text-white rounded-[4px] text-[14px] ">
+          <button className=" w-fit px-3 lg:px-8 min-h-10 lg:min-h-8 bg-slate-700 text-white rounded-[4px] text-[14px] ">
             <FaTrashAlt size={20} className=" text-red-600" />
           </button>
         ) : (
-          <button className=" w-fit px-3 lg:px-7 min-h-10 lg:min-h-8 bg-blue-600 text-white rounded-[4px] text-[14px] ">
+          <button className=" w-fit px-3 lg:px-7 min-h-10 lg:min-h-8 bg-blue-600 text-white rounded-[4px] text-[12px] ">
             Send reminder
           </button>
         )}
       </DialogTrigger>
       {is_reminded ? (
         <DialogContent className=" bg-slate-700 text-white h-full w-full lg:h-[85vh] flex flex-col items-center text-center justify-center border-none">
-          <h1 className=" text-lg text-white">
+          <h1 className=" text-xl text-white">
             You're about to delete this notifciation.
           </h1>
-          <p>You've already sent out reminder emails to participants</p>
+          <p className=" text-[14px] ">
+            You've already sent out reminder emails to participants
+          </p>
 
           <div className=" w-full mt-12 md:mt-14 flex flex-col gap-5 text-center justify-center items-center md:gap-7">
-            <button className=" w-full hover:scale-95 transition-all duration-300 hover:bg-white hover:text-black h-12 rounded-md flex justify-center items-center text-lg bg-red-600 text-white ">
+            <button
+              onClick={handleDelete}
+              className=" w-full hover:scale-95 transition-all duration-300 hover:bg-white hover:text-black h-12 rounded-md flex justify-center items-center text-lg bg-red-600 text-white "
+            >
               Delete
             </button>
             <DialogTrigger className=" w-full hover:scale-95 transition-all duration-300 hover:bg-white hover:text-black h-12 rounded-md bg-blue-600 text-white flex justify-center items-center">
@@ -147,11 +156,14 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
               />
             ))}
           </div>
-          {/* <DialogTrigger className=" w-full min-h-14 text-lg bg-orange-500 text-white rounded-md hover:bg-white hover:text-black transition-all duration-300 ease-in hover:scale-95 "> */}
-          <button onClick={handleShare}>
-            I Understand, Send The Reminder Emails
-          </button>
-          {/* </DialogTrigger> */}
+          <DialogTrigger className=" w-full mt-5 min-h-14 text-lg bg-orange-500 text-white rounded-md hover:bg-white hover:text-black transition-all duration-300 ease-in hover:scale-95 ">
+            <button
+              // className=" w-full h-12 bg-orange-500 text-white rounded-md mt-5 hover:bg-white hover:text-black hover:scale-95 transition-all duration-300 ease-in "
+              onClick={handleShare}
+            >
+              I Understand, Send The Reminder Emails
+            </button>
+          </DialogTrigger>
         </DialogContent>
       )}
     </Dialog>
