@@ -61,6 +61,7 @@ const LowerNotifs = async () => {
                 start_time={notif.start_time}
                 tut_id={notif.tut_id}
                 key={notif.tut_id}
+                is_reminded={notif.is_reminded}
               />
             </div>
           ))}

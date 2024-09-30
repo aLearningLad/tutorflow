@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import InvitedConfirmTab from "./InvitedConfirmTab";
 import { createClient } from "@/lib/supabase/client";
+import { FaTrashAlt } from "react-icons/fa";
 
 const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
   author_id,
@@ -12,6 +13,7 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
   session_link,
   start_time,
   tut_id,
+  is_reminded,
 }) => {
   // state to hold official email reminder list
   const [sendlist, setSendlist] = useState<string[]>(invited_emails);
@@ -35,6 +37,7 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
       const { data: updatedStatus, error: updateError } = await supabase
         .from("calendertuts")
         .update({ is_reminded: true })
+        .eq("tut_id", tut_id)
         .select();
 
       // API call to nodemailer backend
@@ -72,12 +75,26 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
     );
   };
 
+  const handleDelete = async () => {
+    if (!tut_id) {
+    }
+
+    try {
+    } catch (error) {}
+  };
+
   return (
     <Dialog>
       <DialogTrigger>
-        <button className=" w-fit px-3 lg:px-7 min-h-10 lg:min-h-8 bg-blue-600 text-white rounded-[4px] text-[14px] ">
-          Send reminder
-        </button>
+        {is_reminded ? (
+          <button className=" w-fit px-3 min-h-10 lg:min-h-8 bg-slate-700 text-white rounded-[4px] text-[14px] ">
+            <FaTrashAlt size={20} className=" text-red-600" />
+          </button>
+        ) : (
+          <button className=" w-fit px-3 lg:px-7 min-h-10 lg:min-h-8 bg-blue-600 text-white rounded-[4px] text-[14px] ">
+            Send reminder
+          </button>
+        )}
       </DialogTrigger>
       <DialogContent className=" bg-slate-700 text-white h-full w-full lg:h-[85vh] flex flex-col items-center text-center justify-center border-none">
         <h1>
