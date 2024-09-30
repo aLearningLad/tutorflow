@@ -17,7 +17,16 @@ const LowerNotifs = async () => {
 
   if (!currentUserData) {
     return (
-      <div className="w-full h-[35%] flex justify-center flex-col text-center py-2 px-1 lg:px-7"></div>
+      <div className="w-full h-[35%] flex justify-center flex-col text-center py-2 px-1 lg:px-7">
+        <h1>You're not authorized to access notifications. Sign in</h1>
+      </div>
+    );
+  }
+  if (!currentUserData && !calenderTutsDataError) {
+    return (
+      <div className="w-full h-[35%] flex justify-center flex-col text-center py-2 px-1 lg:px-7">
+        <h1>Loading...</h1>
+      </div>
     );
   }
 
