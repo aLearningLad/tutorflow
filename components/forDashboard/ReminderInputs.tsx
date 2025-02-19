@@ -5,6 +5,8 @@ import { useUser } from "@clerk/nextjs";
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 import { DialogTrigger } from "../ui/dialog";
+import { revalidatePath } from "next/cache";
+import { useRouter } from "next/navigation";
 
 const ReminderInputs = () => {
   // to get author email
@@ -36,6 +38,8 @@ const ReminderInputs = () => {
     shareableLink: "",
     is_private: false, // allow user to change this via selector
   });
+
+  const router = useRouter();
 
   const handleDetailsChange = (e: any) => {
     setReminderDetails((prev) => ({
@@ -80,6 +84,7 @@ const ReminderInputs = () => {
 
       alert("Bravo! Submitted successfully!");
       setIsSubmitted(true); //use this state to toggle prompt to close modal
+      router.refresh();
     } catch (error) {
       console.log("Error submitting reminder to DB: ", error);
     }

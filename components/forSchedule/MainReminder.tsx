@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { GiDiceTarget } from "react-icons/gi";
+import SchedulingTopRight from "./SchedulingTopRight";
 
 const MainReminder: React.FC<TreminderCard> = ({
   author,
@@ -15,9 +16,7 @@ const MainReminder: React.FC<TreminderCard> = ({
     <div className=" w-full h-[60%] flex p-1 md:p-2 lg:p-5 lg:gap-5 ">
       <section className=" w-7/12 lg:flex hidden ">
         {/* left side, only visible on large */}
-        <div className=" h-full flex w-full bg-neutral-200/20 rounded-lg ">
-          image comes here
-        </div>
+        <SchedulingTopRight />
       </section>
       <section className=" w-full lg:w-5/12 h-full flex flex-col bg-blue-600 p-1 md:p-2 lg:p-5 rounded-lg">
         {/* right side */}

@@ -23,6 +23,7 @@ const DeleteReminderBtn: React.FC<Tdeletereminderbtn> = ({ reminderId }) => {
         throw new Error(reminderDeletionError.details);
       }
 
+      alert("Deleted!");
       router.refresh();
     } catch (error) {
       console.log("Error while deleting reminder: ", error);

@@ -19,8 +19,8 @@ const OtherReminders: React.FC<Totherremindercard> = ({ allreminders }) => {
           Nothing more to show for now...
         </h2>
         <p className="mb-4 md:mb-7 lg:mb-12">
-          When you create reminders, they will be collected, sorted and shown
-          here. You'll be able to easily curate you reminders by priority,
+          As you add more reminders, they will be collected, sorted and shown
+          here. You'll be able to easily curate your reminders by priority,
           removing them as needed.
         </p>
         <Link
