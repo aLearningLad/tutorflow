@@ -58,3 +58,10 @@ declare type Tflowcontacts = {
   contact_email: string; //email address to be saved;
   contact_name: string;
 };
+
+declare type Tmotivations = {
+  id: number;
+  quote: string;
+  speaker: string;
+  quoteImg: string;
+};
