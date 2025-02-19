@@ -63,28 +63,32 @@ const Icons = {
 const DATA = {
   navbar: [
     { href: "/dashboard", icon: HomeIcon, label: "Sign In" },
-    { href: "#", icon: PencilIcon, label: "Blog" },
+    {
+      href: "https://abdul5amiking47.medium.com/building-a-successful-blog-in-2025-f10144165ca2",
+      icon: PencilIcon,
+      label: "Blog",
+    },
   ],
   contact: {
     social: {
       GitHub: {
         name: "Repo",
-        url: "#",
+        url: "https://github.com/aLearningLad/tutorflow",
         icon: Icons.github,
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "#",
+        url: "https://www.linkedin.com/",
         icon: Icons.linkedin,
       },
       X: {
         name: "X",
-        url: "#",
+        url: "https://x.com",
         icon: Icons.x,
       },
       email: {
         name: "Mail Us",
-        url: "#",
+        url: "https://mail.google.com/mail",
         icon: Icons.email,
       },
     },
@@ -102,6 +106,7 @@ export function LandingDock() {
                 <TooltipTrigger asChild>
                   <Link
                     href={item.href}
+                    target="_blank"
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
                       "size-12 rounded-full"
@@ -123,6 +128,7 @@ export function LandingDock() {
                 <TooltipTrigger asChild>
                   <Link
                     href={social.url}
+                    target="_blank"
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
                       "size-12 rounded-full group hover:bg-neutral-50/40 flex flex-col items-center justify-center"
