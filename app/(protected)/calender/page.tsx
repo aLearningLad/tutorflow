@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
 import { FaLink } from "react-icons/fa";
+import { FaPersonCircleCheck } from "react-icons/fa6";
 
 const CalenderPage = async () => {
   const supabase = createClient();
@@ -32,7 +33,7 @@ const CalenderPage = async () => {
                   index % 2 !== 0 &&
                   index % 3 !== 0 &&
                   " bg-blue-900 text-white "
-                } rounded-lg flex flex-col items-center justify-between text-center`}
+                } rounded-lg flex hover:bg-neutral-100/10 transition-all duration-300 ease-in-out hover:scale-95 flex-col items-center justify-between text-center`}
               >
                 <span className=" w-full flex justify-between items-center ">
                   <div className=" flex flex-col items-start">
@@ -53,22 +54,35 @@ const CalenderPage = async () => {
                 <div className=" w-full flex justify-center">
                   <Link
                     className={` w-full lg:w-8/12  ${
-                      index % 2 === 0 && "bg-orange-500 text-white"
-                    } ${index % 3 === 0 && "bg-cyan-500 text-black"} ${
+                      index % 2 === 0 &&
+                      "bg-orange-300 text-black hover:bg-black hover:text-white"
+                    } ${
+                      index % 3 === 0 &&
+                      "bg-cyan-500 text-black hover:bg-black hover:text-white"
+                    } ${
                       index % 2 !== 0 &&
                       index % 3 !== 0 &&
-                      " bg-blue-600 text-white "
-                    } hover:bg-transparent hover:scale-95 transition-all duration-300 ease-in rounded-md text-lg py-2`}
+                      " bg-blue-600 text-white hover:bg-black "
+                    }  hover:scale-95 transition-all duration-300 ease-in rounded-md text-lg py-2`}
                     href={`/tutroom/${tut.session_link}`}
                   >
                     Start Tut Now
                   </Link>
                 </div>
-                <span className=" w-full py-2 flex gap-2 overflow-auto text-ellipsis">
-                  {tut.invited_emails.map((email: string) => (
-                    <p key={email}>{email}</p>
-                  ))}
-                </span>
+
+                {tut.invited_emails.length > 0 && (
+                  <span className=" w-full py-2 flex gap-2 overflow-auto text-ellipsis ">
+                    {tut.invited_emails.map((email: string) => (
+                      <span
+                        className=" bg-neutral-100/20 px-3 lg:px-5 rounded-md py-2 flex justify-center items-center gap-1"
+                        key={email}
+                      >
+                        <FaPersonCircleCheck size={18} color="white" />
+                        {email}
+                      </span>
+                    ))}
+                  </span>
+                )}
               </div>
             ))}
           </section>
