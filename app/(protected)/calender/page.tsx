@@ -23,10 +23,16 @@ const CalenderPage = async () => {
         <Notifs />
         <div className="h-[90vh] flex flex-col p-1 md:p-2 lg:p-5 items-center text-center ">
           <section className="rounded-lg gap-4 lg:gap-12 p-2 md:p-5 lg:p-9 w-full h-full bg-neutral-400/10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-auto ">
-            {calenderTutData.map((tut) => (
+            {calenderTutData.map((tut, index) => (
               <div
                 key={tut}
-                className=" min-h-[30vh] py-2 max-h-[40vh] px-1 lg:px-2 w-full border-4 border-cyan-500 rounded-lg flex flex-col items-center justify-between text-center"
+                className={`min-h-[30vh] py-2 lg:py-4 max-h-[40vh] px-1 lg:px-5 w-full ${
+                  index % 2 === 0 && "bg-orange-500 text-white"
+                } ${index % 3 === 0 && "bg-cyan-500 text-black"} ${
+                  index % 2 !== 0 &&
+                  index % 3 !== 0 &&
+                  " bg-blue-900 text-white "
+                } rounded-lg flex flex-col items-center justify-between text-center`}
               >
                 <span className=" w-full flex justify-between items-center ">
                   <div className=" flex flex-col items-start">
@@ -46,7 +52,13 @@ const CalenderPage = async () => {
 
                 <div className=" w-full flex justify-center">
                   <Link
-                    className=" w-full lg:w-8/12 bg-orange-500 border-4 border-orange-500 hover:bg-transparent hover:scale-95 hover:text-orange-400 transition-all duration-300 ease-in text-white rounded-md text-lg py-2"
+                    className={` w-full lg:w-8/12  ${
+                      index % 2 === 0 && "bg-orange-500 text-white"
+                    } ${index % 3 === 0 && "bg-cyan-500 text-black"} ${
+                      index % 2 !== 0 &&
+                      index % 3 !== 0 &&
+                      " bg-blue-600 text-white "
+                    } hover:bg-transparent hover:scale-95 transition-all duration-300 ease-in rounded-md text-lg py-2`}
                     href={`/tutroom/${tut.session_link}`}
                   >
                     Start Tut Now
