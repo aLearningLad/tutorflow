@@ -19,12 +19,12 @@ declare type Tsquaredata = {
 
 declare type TreminderCard = {
   author: string; //this is user's email from Clerk
-  reminderId: string; //generate this with nanoid
+  reminderid: string; //generate this with nanoid
   title: string;
-  startsAt: string;
-  endsAt: string;
+  startsat: string;
+  endsat: string;
   detail: string;
-  shareableLink: string;
+  shareable_link: string;
   is_private: boolean;
 };
 
@@ -63,5 +63,5 @@ declare type Tmotivations = {
   id: number;
   quote: string;
   speaker: string;
-  quoteImg: string;
+  quoteImg: string[];
 };

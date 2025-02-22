@@ -61,8 +61,8 @@ const VideoRoom = () => {
       <div className=" h-screen w-full bg-slate-900 flex flex-col justify-center items-center">
         <h2 className=" text-xl lg:text-2xl text-white">Just a moment...</h2>
         <p className=" text-[14px] lg:text-[12px] text-neutral-200 ">
-          We're setting up a tutorial room for you. <br /> You're going to be
-          live in no time!{" "}
+          {"We're"} setting up a tutorial room for you. <br /> {"You're"} going
+          to be live in no time!{" "}
         </p>
       </div>
     );

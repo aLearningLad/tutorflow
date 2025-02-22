@@ -101,6 +101,7 @@ const InputForNew = () => {
             {inviteList.length > 0 &&
               inviteList.map((person) => (
                 <PersonCard
+                  key={person}
                   emailString={person}
                   inviteeList={inviteList}
                   removeInvitee={() => removeInvitee(person)}

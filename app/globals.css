@@ -71,3 +71,92 @@
 ::-webkit-scrollbar {
   background-color: transparent;
 }
+
+.primaryBubble {
+  width: 180px;
+  height: 180px;
+  border-radius: 100%;
+  animation: pulseAnimation 7s infinite;
+}
+
+.secondaryBubble {
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  animation: secondPulseAnimation 10s infinite;
+}
+
+@keyframes pulseAnimation {
+  0% {
+    scale: 1;
+  }
+
+  50% {
+    scale: 0.4;
+  }
+
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes secondPulseAnimation {
+  0% {
+    scale: 1;
+  }
+
+  20% {
+    scale: 0.4;
+  }
+
+  40% {
+    scale: 0.6;
+  }
+
+  60% {
+    scale: 0.4;
+  }
+
+  80% {
+    scale: 0.7;
+  }
+
+  100% {
+    scale: 1;
+  }
+}
+
+.pulseLink {
+  animation: pulseLinkAnimation 3s infinite;
+  background-color: white;
+  color: black;
+}
+
+@keyframes pulseLinkAnimation {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 0.9;
+  }
+  100% {
+    scale: 1;
+  }
+}
+.pulseLinkTwo {
+  animation: pulseLinkAnimation 2s infinite;
+  background-color: black;
+  color: white;
+}
+
+@keyframes pulseLinkAnimationTwo {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 0.95;
+  }
+  100% {
+    scale: 1;
+  }
+}

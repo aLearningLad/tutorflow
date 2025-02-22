@@ -22,7 +22,7 @@ const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
         <DialogContent className=" w-full h-[70vh] md:w-10/12 lg:w-8/12 xl:w-6/12 flex flex-col items-center justify-center text-center bg-slate-600/50 text-white">
           <DialogHeader className=" text-center">
             <DialogTitle className=" text-2xl">
-              You're creating a new tutorial session
+              {"You're"} creating a new tutorial session
             </DialogTitle>
             <DialogDescription className=" text-white w-full flex justify-center text-center">
               This will open a tut session
@@ -101,7 +101,7 @@ const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
       <DialogTrigger> {btnIcon}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>You're creating a new tutorial session</DialogTitle>
+          <DialogTitle>{"You're"} creating a new tutorial session</DialogTitle>
           <DialogDescription>This will open a tut session</DialogDescription>
         </DialogHeader>
       </DialogContent>

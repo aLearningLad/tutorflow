@@ -124,10 +124,10 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
       {is_reminded ? (
         <DialogContent className=" bg-slate-700 text-white h-full w-full lg:h-[85vh] flex flex-col items-center text-center justify-center border-none">
           <h1 className=" text-xl text-white">
-            You're about to delete this notifciation.
+            {"You're"} about to delete this notifciation.
           </h1>
           <p className=" text-[14px] ">
-            You've already sent out reminder emails to participants
+            {"You've"} already sent out reminder emails to participants
           </p>
 
           <div className=" w-full mt-12 md:mt-14 flex flex-col gap-5 text-center justify-center items-center md:gap-7">
@@ -145,11 +145,12 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
       ) : (
         <DialogContent className=" bg-slate-700 text-white h-full w-full lg:h-[85vh] flex flex-col items-center text-center justify-center border-none">
           <h1 className=" text-lg text-white">
-            You're about to send a reminder email to the people listed below
+            {"You're"} about to send a reminder email to the people listed below
           </h1>
           <div className=" bg-slate-900 w-full h-[65%] text-white rounded-md p-3 lg:p-5 overflow-auto flex flex-col gap-2 md:gap-4 last:gap-5 ">
             {sendlist.map((btn) => (
               <InvitedConfirmTab
+                key={btn}
                 emailString={btn}
                 handleToRemove={() => handleToRemove(btn)}
                 index={btn}

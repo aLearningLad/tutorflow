@@ -57,6 +57,7 @@ const CalenderInvitees = () => {
             {emails.length > 0 &&
               emails.map((person) => (
                 <PersonCard
+                  key={person}
                   emailString={person}
                   inviteeList={calenderInviteList}
                   removeInvitee={() => removeFromEmails(person)}

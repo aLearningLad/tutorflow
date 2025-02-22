@@ -19,19 +19,19 @@ const MainReminder: React.FC<TreminderCard> = ({
         {/* left side, only visible on large */}
         <SchedulingTopLeft />
       </section>
-      <section className=" w-full lg:w-5/12 h-full flex flex-col bg-blue-600 p-1 md:p-2 lg:p-5 rounded-lg">
+      <section className=" w-full lg:w-5/12 h-full flex hover:scale-95 transition-all duration-300 ease-in flex-col hover:bg-neutral-100/20 bg-blue-600/10 p-1 md:p-2 lg:p-5 rounded-lg">
         {/* right side */}
         <section className=" w-full py-2">
           <div className=" w-full  flex justify-between ">
-            <span className="p-2 bg-neutral-100/30 rounded-md">
+            <span className="py-2 px-4 bg-neutral-100/10 rounded-md">
               <p className="text-[10px] ">from</p>
               <h2>{startsAt}</h2>
             </span>
-            <span className="min-w-[30%] max-w-[50%] flex items-center justify-center bg-neutral-200/30 p-2 rounded-md gap-2 ">
+            <span className="min-w-[30%] max-w-[50%] text-ellipsis flex items-center justify-center bg-neutral-100/10 py-2 px-5 lg:px-7 rounded-md gap-2 ">
               <GiDiceTarget size={20} />
               <p className=" text-xl  overflow-auto flex ">{title}</p>
             </span>
-            <span className=" p-2 bg-neutral-100/30 rounded-md ">
+            <span className="py-2 px-4 bg-neutral-100/10 rounded-md ">
               <p className="text-[10px]">until</p>
               <h2>{endsAt}</h2>
             </span>
@@ -50,7 +50,7 @@ const MainReminder: React.FC<TreminderCard> = ({
             <p className=" text-[18px] ">{author}</p>
           </span>
         </section>
-        <section className=" w-full h-full lg:h-fit overflow-auto rounded-md text-ellipsis bg-slate-100/30 py-2 px-4 ">
+        <section className=" w-full h-full lg:h-fit overflow-auto rounded-md text-ellipsis bg-slate-100/10 py-2 px-4 ">
           <p>{detail}</p>
         </section>
       </section>

@@ -3,15 +3,15 @@ import { currentUser } from "@clerk/nextjs/server";
 import MainReminder from "./MainReminder";
 import OtherReminders from "./OtherReminders";
 
-const ScheduleComp = async () => {
-  const supabase = createClient();
-  const user = await currentUser();
+interface Ischedulecomp {
+  remindersData: TreminderCard[] | null;
+  remindersDataError?: any;
+}
 
-  const { data: remindersData, error: remindersDataError } = await supabase
-    .from("reminders")
-    .select("*")
-    .eq("authorid", user?.id);
-
+const ScheduleComp: React.FC<Ischedulecomp> = async ({
+  remindersData,
+  remindersDataError,
+}) => {
   if (remindersData && remindersData.length > 0) {
     const mainReminderData = remindersData[0];
     const otherReminderData = remindersData.slice(1);
@@ -20,11 +20,11 @@ const ScheduleComp = async () => {
         <MainReminder
           author={mainReminderData.author}
           detail={mainReminderData.detail}
-          endsAt={mainReminderData.endsat}
+          endsat={mainReminderData.endsat}
           is_private={mainReminderData.is_private}
-          reminderId={mainReminderData.reminderid}
-          shareableLink={mainReminderData.shareable_link}
-          startsAt={mainReminderData.startsat}
+          reminderid={mainReminderData.reminderid}
+          shareable_link={mainReminderData.shareable_link}
+          startsat={mainReminderData.startsat}
           title={mainReminderData.title}
           key={mainReminderData.reminderid}
         />
@@ -34,7 +34,11 @@ const ScheduleComp = async () => {
   }
 
   if (remindersDataError) {
-    return <div>Something went wrong. Contact developer!</div>;
+    return (
+      <div className="w-full h-[90vh] flex justify-center items-center flex-col text-center">
+        Something went wrong. Please contact {"TutorFlow's"} developer
+      </div>
+    );
   }
 
   return (

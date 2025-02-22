@@ -31,7 +31,10 @@ const MobileNavToggle = () => {
       </DialogTrigger>
       <DialogContent className=" w-full h-screen flex flex-col items-center justify-center text-center bg-slate-900 text-white px-3">
         {sidebardata.map((btn) => (
-          <button className=" w-full h-20 mb-4 bg-blue-600 odd:bg-orange-500 rounded-md text-xl">
+          <button
+            key={btn.linkId}
+            className=" w-full h-20 mb-4 bg-blue-600 odd:bg-orange-500 rounded-md text-xl"
+          >
             {btn.label}
           </button>
         ))}

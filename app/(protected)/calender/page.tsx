@@ -24,7 +24,10 @@ const CalenderPage = async () => {
         <div className="h-[90vh] flex flex-col p-1 md:p-2 lg:p-5 items-center text-center ">
           <section className="rounded-lg gap-4 lg:gap-12 p-2 md:p-5 lg:p-9 w-full h-full bg-neutral-400/10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-auto ">
             {calenderTutData.map((tut) => (
-              <div className=" min-h-[30vh] py-2 max-h-[40vh] px-1 lg:px-2 w-full border-4 border-cyan-500 rounded-lg flex flex-col items-center justify-between text-center">
+              <div
+                key={tut}
+                className=" min-h-[30vh] py-2 max-h-[40vh] px-1 lg:px-2 w-full border-4 border-cyan-500 rounded-lg flex flex-col items-center justify-between text-center"
+              >
                 <span className=" w-full flex justify-between items-center ">
                   <div className=" flex flex-col items-start">
                     <p className=" text-[12px] text-neutral-300 ">
@@ -51,7 +54,7 @@ const CalenderPage = async () => {
                 </div>
                 <span className=" w-full py-2 flex gap-2 overflow-auto text-ellipsis">
                   {tut.invited_emails.map((email: string) => (
-                    <p>{email}</p>
+                    <p key={email}>{email}</p>
                   ))}
                 </span>
               </div>
