@@ -18,10 +18,10 @@ const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
   if (modalFor === modalOptions.NEW) {
     return (
       <Dialog>
-        <DialogTrigger>{btnIcon}</DialogTrigger>
-        <DialogContent className=" w-full h-[70vh] md:w-10/12 lg:w-8/12 xl:w-6/12 flex flex-col items-center justify-center text-center bg-slate-600/50 text-white">
+        <DialogTrigger className="pulseLink2">{btnIcon}</DialogTrigger>
+        <DialogContent className=" w-full h-[70vh] md:w-10/12 lg:w-8/12 xl:w-6/12 flex flex-col items-center justify-center text-center bg-white text-black">
           <DialogHeader className=" text-center">
-            <DialogTitle className=" text-2xl">
+            <DialogTitle className=" text-xl font-normal">
               {"You're"} creating a new tutorial session
             </DialogTitle>
             <DialogDescription className=" text-white w-full flex justify-center text-center">
@@ -37,7 +37,7 @@ const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
   if (modalFor === modalOptions.CALENDER) {
     return (
       <Dialog>
-        <DialogTrigger> {btnIcon}</DialogTrigger>
+        <DialogTrigger className="pulseLink2"> {btnIcon}</DialogTrigger>
         <DialogContent className=" w-full h-[70vh] md:w-10/12 lg:w-8/12 xl:w-6/12 flex flex-col items-center justify-center text-center bg-slate-600/50 text-white">
           <DialogHeader>
             <DialogTitle className=" text-2xl">
@@ -58,10 +58,10 @@ const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
   if (modalFor === modalOptions.JOIN) {
     return (
       <Dialog>
-        <DialogTrigger> {btnIcon}</DialogTrigger>
-        <DialogContent className=" w-full h-[70vh] md:w-10/12 lg:w-8/12 xl:w-6/12 flex flex-col items-center justify-center text-center bg-slate-600/50 text-white">
+        <DialogTrigger className="pulseLink2"> {btnIcon}</DialogTrigger>
+        <DialogContent className=" w-full h-[70vh] md:w-10/12 lg:w-8/12 flex flex-col items-center justify-center text-center bg-white text-black">
           <DialogHeader>
-            <DialogTitle className=" text-2xl">
+            <DialogTitle className=" text-xl font-normal">
               Join an existing tut session
             </DialogTitle>
             <DialogDescription className=" text-white w-full flex justify-center text-center">
@@ -77,7 +77,7 @@ const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
   if (modalFor === modalOptions.SHARE) {
     return (
       <Dialog>
-        <DialogTrigger> {btnIcon}</DialogTrigger>
+        <DialogTrigger className="pulseLink2"> {btnIcon}</DialogTrigger>
         <DialogContent className=" bg-neutral-100 ">
           <DialogHeader>
             <DialogTitle className=" text-xl font-normal text-black">
@@ -98,7 +98,7 @@ const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
 
   return (
     <Dialog>
-      <DialogTrigger> {btnIcon}</DialogTrigger>
+      <DialogTrigger className="pulseLink2"> {btnIcon}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{"You're"} creating a new tutorial session</DialogTitle>

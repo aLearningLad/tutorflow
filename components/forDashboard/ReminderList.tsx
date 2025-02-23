@@ -26,7 +26,7 @@ const ReminderList = async () => {
         {allReminders.map((reminder) => (
           <div
             key={reminder}
-            className=" w-full min-h-60 rounded-lg bg-neutral-100/10 hover:scale-95 hover:bg-slate-700/40 transition-all duration-300 ease-in-out p-5 flex flex-col px-1 md:px-2 lg:px-3 py-2 lg:py-3"
+            className=" w-full min-h-60 rounded-lg bg-gradient-to-b from-transparent via-blue-950/30 to-blue-950 hover:border-4 border-white hover:scale-95 hover:bg-slate-700/40 transition-all duration-300 ease-in-out p-5 flex flex-col px-1 md:px-2 lg:px-3 py-2 lg:py-3"
           >
             {/* top section */}
             <section className=" w-full flex justify-between items-center h-[20%] border-b-2 border-slate-600">

@@ -132,6 +132,10 @@
   color: black;
 }
 
+.pulseLink2 {
+  animation: pulseLinkAnimation 3s infinite;
+}
+
 @keyframes pulseLinkAnimation {
   0% {
     scale: 1;

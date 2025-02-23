@@ -3,13 +3,15 @@
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const ToJoinInput = () => {
   const [meetingLink, setMeetingLink] = useState<string>("");
   const router = useRouter();
 
   const enterSession = async () => {
-    if (meetingLink.length < 5) {
+    if (meetingLink.length < 10) {
+      toast.error("Please provide a valid tutorial session link");
       return;
     }
 
@@ -22,7 +24,7 @@ const ToJoinInput = () => {
         .eq("shareable_link", meetingLink);
 
       if (!meetingExists) {
-        alert("No meeting link found!");
+        toast.error("No meeting link found!");
         return;
       }
 
@@ -31,8 +33,12 @@ const ToJoinInput = () => {
       }
 
       if (meetingExists.length < 1) {
-        alert("No Meeting Found!"); //use a toaster here instead
+        toast.error("No meeting scheduled for that link!");
+        return;
       }
+
+      toast.success("Joining session . . .");
+      router.push(meetingLink);
 
       console.log("This is the meeting data", meetingExists);
     } catch (error) {
@@ -41,13 +47,13 @@ const ToJoinInput = () => {
   };
 
   return (
-    <div className=" w-full md:w-8/12 lg:w-6/12 flex flex-col">
+    <div className=" w-full flex flex-col">
       <input
         type="text"
         placeholder="Eg. http://thetutsession.com/2%41./(6^fhdbe"
         value={meetingLink}
         onChange={(e) => setMeetingLink(e.target.value)}
-        className=" w-full h-12 bg-slate-600 text-white px-3 py-1 rounded-md"
+        className=" w-full h-12 bg-slate-600/30 placeholder:text-neutral-700 text-black px-3 py-1 rounded-md"
       />
       <button
         className=" w-full bg-green-500 text-white rounded-md h-10 mt-5"

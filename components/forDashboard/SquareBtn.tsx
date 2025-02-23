@@ -49,7 +49,7 @@ const SquareBtn: React.FC<Tsquaredata> = ({
               `}
     >
       <section className=" w-full h-[60%] flex justify-between px-2 py-1 ">
-        <div className="w-3/12 h-[50%] bg-neutral-50/30 flex justify-center items-center rounded-lg">
+        <div className="w-3/12 h-[50%] bg-neutral-50/30 pulseLink2 flex justify-center items-center rounded-lg">
           <Modals modalFor={modalForValue} btnIcon={btnIcon} />
         </div>
         <Image src={btnImg} width={100} height={100} alt="button Icon" />
