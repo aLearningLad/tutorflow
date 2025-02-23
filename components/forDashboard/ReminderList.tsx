@@ -4,6 +4,7 @@ import ReminderBtn from "./ReminderBtn";
 import { SlOptions } from "react-icons/sl";
 import DeleteReminderBtn from "./DeleteReminderBtn";
 import { FaLink } from "react-icons/fa";
+import { FcCancel } from "react-icons/fc";
 
 const ReminderList = async () => {
   const supabase = createClient();
@@ -25,7 +26,7 @@ const ReminderList = async () => {
         {allReminders.map((reminder) => (
           <div
             key={reminder}
-            className=" w-full min-h-60 rounded-lg bg-slate-700 p-5 flex flex-col px-1 md:px-2 lg:px-3 py-2 lg:py-3"
+            className=" w-full min-h-60 rounded-lg bg-neutral-100/10 hover:scale-95 hover:bg-slate-700/40 transition-all duration-300 ease-in-out p-5 flex flex-col px-1 md:px-2 lg:px-3 py-2 lg:py-3"
           >
             {/* top section */}
             <section className=" w-full flex justify-between items-center h-[20%] border-b-2 border-slate-600">
@@ -44,21 +45,33 @@ const ReminderList = async () => {
 
             {/* lower section */}
             <section className=" w-full flex flex-col lg:flex-row justify-between h-[20%] ">
-              <span className=" w-full lg:w-1/2 flex justify-start gap-1">
+              <span className=" w-full lg:w-fit lg:px-5 h-full rounded-lg items-center flex justify-start gap-1 bg-orange-500 ">
                 <p className=" text-[14px] text-neutral-200">
                   {reminder.startsat}
                 </p>
-                <p>until</p>
+                <p>{">>"}</p>
                 <p className=" text-[14px] text-neutral-200">
                   {reminder.endsat}
                 </p>
               </span>
 
               <span className=" w-full lg:w-1/2 flex justify-end gap-1 px-3 ">
-                <button className=" w-32 flex h-full bg-blue-600 rounded-md justify-center items-center gap-1 ">
-                  <FaLink size={14} />
+                <button
+                  className={`w-32 flex h-full ${
+                    reminder.shareable_link.length > 0
+                      ? "bg-blue-600! pulseLink"
+                      : "bg-neutral-100/20"
+                  } rounded-md justify-center items-center gap-1 `}
+                >
+                  {reminder.shareable_link.length > 0 ? (
+                    <FaLink size={14} />
+                  ) : (
+                    <FcCancel />
+                  )}
                   <p className=" w-9/12 h-full overflow-clip flex text-[14px] rounded-md text-ellipsis items-center justify-center ">
-                    {reminder.shareable_link}
+                    {reminder.shareable_link.length > 0
+                      ? reminder.shareable_link
+                      : "No link"}
                   </p>
                 </button>
               </span>

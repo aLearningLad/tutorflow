@@ -3,11 +3,17 @@ import React from "react";
 
 const ClockSection = () => {
   return (
-    <div className=" w-full h-52 bg-gray-400/40 p-2 lg:p-5 rounded-lg relative flex flex-col justify-end items-center lg:items-start">
+    <div className=" w-full h-52 bg-white text-black overflow-clip p-2 lg:p-5 rounded-lg relative flex flex-col justify-end items-center lg:items-start">
       <div className=" absolute bottom-0 right-0 ">
         {/* plant image  */}
         <Image src="/assets/water.png" width={150} height={150} alt="plant" />
       </div>
+
+      {/* bubble one */}
+      <div className="secondaryBubble absolute top-3 left-7 bg-gradient-to-t from-red-800 via-red-800/20 to-transparent " />
+
+      {/* bubble two */}
+      <div className=" primaryBubble absolute bottom-[70%] right-2 bg-gradient-to-l from-blue-800 via-blue-800/20 to-transparent " />
 
       <div>
         {/* computer image */}

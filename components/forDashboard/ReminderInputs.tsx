@@ -8,6 +8,7 @@ import { DialogTrigger } from "../ui/dialog";
 import { revalidatePath } from "next/cache";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { TiTick } from "react-icons/ti";
 
 const ReminderInputs = () => {
   // to get author email
@@ -56,7 +57,7 @@ const ReminderInputs = () => {
     const { detail, endsat, startsat, title } = reminderDetails;
 
     if (
-      detail.length < 1 ||
+      detail.length < 10 ||
       endsat.length < 3 ||
       startsat.length < 3 ||
       title.length < 3
@@ -97,8 +98,12 @@ const ReminderInputs = () => {
         {/* inputs ===> scrollable */}
         <div className="w-full overflow-auto lg:h-[90%] gap-y-4 flex flex-col items-center justify-start ">
           <section className="w-full min-h-24 flex flex-col items-center text-center justify-center">
-            <label className=" text-[18px] " htmlFor="title">
+            <label
+              className=" text-[18px] flex justify-center text-center gap-1 items-center "
+              htmlFor="title"
+            >
               Title
+              {reminderDetails.title.length > 3 && <TiTick color="green" />}
             </label>
             <input
               type="text"
@@ -109,32 +114,44 @@ const ReminderInputs = () => {
             />
           </section>
           <section className="w-full min-h-24 flex flex-col items-center text-center justify-center">
-            <label className=" text-[18px] " htmlFor="startsAt">
-              Starts at
+            <label
+              className=" text-[18px] flex justify-center items-center text-center gap-1 "
+              htmlFor="startsAt"
+            >
+              Starts at{" "}
+              {reminderDetails.startsat.length > 4 && <TiTick color="green" />}
             </label>
             <input
               type="text"
-              name="startsAt"
+              name="startsat"
               placeholder="Eg. 18h00"
               className=" bg-slate-600/20 h-[70%] lg:h-[60%] text-[14px] placeholder:text-neutral-700 rounded-md text-black focus:text-white px-2 py-1 w-full focus:outline-none focus:bg-black focus:scale-95 transition duration-300 ease-in"
               onChange={handleDetailsChange}
             />
           </section>
           <section className="w-full min-h-24 flex flex-col items-center text-center justify-center">
-            <label className=" text-[18px] " htmlFor="endsAt">
-              Ends at
+            <label
+              className=" text-[18px] flex justify-center items-center text-center gap-1"
+              htmlFor="endsAt"
+            >
+              Ends at{" "}
+              {reminderDetails.endsat.length > 4 && <TiTick color="green" />}
             </label>
             <input
               type="text"
-              name="endsAt"
+              name="endsat"
               placeholder="Eg. 19h30"
               className=" bg-slate-600/20 h-[70%] lg:h-[60%] text-[14px] placeholder:text-neutral-700 rounded-md text-black focus:text-white px-2 py-1 w-full focus:outline-none focus:bg-black focus:scale-95 transition duration-300 ease-in"
               onChange={handleDetailsChange}
             />
           </section>
           <section className="w-full min-h-[40vh] lg:min-h-[45vh] flex flex-col items-center text-center justify-center">
-            <label className=" text-[18px] " htmlFor="detail">
-              Reminder details
+            <label
+              className=" text-[18px] flex justify-center items-center text-center gap-1"
+              htmlFor="detail"
+            >
+              Reminder details{" "}
+              {reminderDetails.detail.length > 30 && <TiTick color="green" />}
             </label>
             <textarea
               name="detail"
@@ -144,12 +161,18 @@ const ReminderInputs = () => {
             />
           </section>
           <section className="w-full min-h-24 flex flex-col items-center text-center justify-center">
-            <label className=" text-[18px] " htmlFor="shareableLink">
-              Attach a link
+            <label
+              className=" text-[18px] flex justify-center items-center text-center gap-1"
+              htmlFor="shareable_link"
+            >
+              Attach a link{" "}
+              {reminderDetails.shareable_link.length > 3 && (
+                <TiTick color="green" />
+              )}
             </label>
             <input
               type="text"
-              name="shareableLink"
+              name="shareable_link"
               placeholder="Eg. https://instagram.com"
               className=" bg-slate-600/20 h-[70%] lg:h-[60%] text-[14px] placeholder:text-neutral-700 rounded-md text-black focus:text-white px-2 py-1 w-full focus:outline-none focus:bg-black focus:scale-95 transition duration-300 ease-in"
               onChange={handleDetailsChange}
@@ -173,8 +196,8 @@ const ReminderInputs = () => {
   if (isSubmitted) {
     return (
       <div className="w-full h-fit flex flex-col items-center text-center relative gap-4">
-        <h1 className=" text-xl font-semibold text-white ">Submitted!</h1>
-        <h3 className=" text-[14px] text-neutral-200 ">
+        <h1 className=" text-xl font-semibold text-black ">Submitted!</h1>
+        <h3 className=" text-[14px] text-black ">
           You may now close this modal
         </h3>
         <DialogTrigger className="mt-3 bg-cyan-500 hover:bg-orange-400 transition-all duration-300 ease-in text-white text-lg w-full h-12 rounded-md flex justify-center items-center">
