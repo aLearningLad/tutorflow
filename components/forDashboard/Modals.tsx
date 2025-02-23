@@ -78,13 +78,13 @@ const Modals: React.FC<Imodal> = ({ modalFor, btnIcon }) => {
     return (
       <Dialog>
         <DialogTrigger> {btnIcon}</DialogTrigger>
-        <DialogContent className=" bg-slate-700 text-white">
+        <DialogContent className=" bg-neutral-100 ">
           <DialogHeader>
-            <DialogTitle className=" text-xl text-white">
+            <DialogTitle className=" text-xl font-normal text-black">
               Add reminder
             </DialogTitle>
             <DialogDescription>
-              <p className=" text-[14px] text-neutral-200 ">
+              <p className=" text-[14px] text-black ">
                 Create a reminder for important information, or plans you might
                 have
               </p>

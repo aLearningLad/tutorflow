@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { DialogTrigger } from "../ui/dialog";
 import { revalidatePath } from "next/cache";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const ReminderInputs = () => {
   // to get author email
@@ -30,12 +31,12 @@ const ReminderInputs = () => {
 
   const [reminderDetails, setReminderDetails] = useState<TreminderCard>({
     author: authorName, // get from clerk
-    reminderId: nanoid(), // call nanoid here
+    reminderid: nanoid(), // call nanoid here
     title: "", // get from user input here
-    startsAt: "", // get from user input here
-    endsAt: "", // get from user input here
+    startsat: "", // get from user input here
+    endsat: "", // get from user input here
     detail: "", // get from user input here
-    shareableLink: "",
+    shareable_link: "",
     is_private: false, // allow user to change this via selector
   });
 
@@ -52,28 +53,28 @@ const ReminderInputs = () => {
   const submitReminder = async () => {
     const supabase = createClient();
 
-    const { detail, endsAt, startsAt, title } = reminderDetails;
+    const { detail, endsat, startsat, title } = reminderDetails;
 
     if (
       detail.length < 1 ||
-      endsAt.length < 3 ||
-      startsAt.length < 3 ||
+      endsat.length < 3 ||
+      startsat.length < 3 ||
       title.length < 3
     ) {
-      alert("Values are missing or non-descriptive");
+      toast.error("Values are missing or non-descriptive");
       return;
     }
     try {
       const { data: reminderDataSubmitted, error: reminderSubmissionError } =
         await supabase.from("reminders").insert({
           author: authorName,
-          reminderid: reminderDetails.reminderId,
+          reminderid: reminderDetails.reminderid,
           authorid: idValue,
           title: title,
-          startsat: startsAt,
-          endsat: endsAt,
+          startsat: startsat,
+          endsat: endsat,
           detail: detail,
-          shareable_link: reminderDetails.shareableLink,
+          shareable_link: reminderDetails.shareable_link,
           is_private: reminderDetails.is_private,
           author_email: authorEmailValue,
         });
@@ -92,9 +93,9 @@ const ReminderInputs = () => {
 
   if (!isSubmitted) {
     return (
-      <div className="w-full h-[70vh] border-4 border-white flex flex-col relative gap-4">
+      <div className="w-full h-[70vh] flex flex-col relative gap-4">
         {/* inputs ===> scrollable */}
-        <div className="w-full overflow-auto lg:h-[90%] bg-pink-400/40 gap-y-4 flex flex-col items-center justify-start ">
+        <div className="w-full overflow-auto lg:h-[90%] gap-y-4 flex flex-col items-center justify-start ">
           <section className="w-full min-h-24 flex flex-col items-center text-center justify-center">
             <label className=" text-[18px] " htmlFor="title">
               Title
@@ -103,11 +104,11 @@ const ReminderInputs = () => {
               type="text"
               name="title"
               placeholder="Eg. call Mr. Anderson"
-              className=" bg-slate-600 h-[70%] lg:h-[60%] rounded-md text-white px-2 py-1 w-full focus:outline-none focus:bg-black focus:scale-95 transition duration-300 ease-in"
+              className=" bg-slate-600/20 h-[70%] lg:h-[60%] text-[14px] placeholder:text-neutral-700 rounded-md text-black focus:text-white px-2 py-1 w-full focus:outline-none focus:bg-black focus:scale-95 transition duration-300 ease-in"
               onChange={handleDetailsChange}
             />
           </section>
-          <section className="w-full min-h-24 border-2 border-white flex flex-col items-center text-center justify-center">
+          <section className="w-full min-h-24 flex flex-col items-center text-center justify-center">
             <label className=" text-[18px] " htmlFor="startsAt">
               Starts at
             </label>
@@ -115,11 +116,11 @@ const ReminderInputs = () => {
               type="text"
               name="startsAt"
               placeholder="Eg. 18h00"
-              className=" bg-slate-600 h-[70%] lg:h-[60%] rounded-md text-white px-2 py-1 w-full focus:outline-none focus:bg-black focus:scale-95 transition duration-300 ease-in"
+              className=" bg-slate-600/20 h-[70%] lg:h-[60%] text-[14px] placeholder:text-neutral-700 rounded-md text-black focus:text-white px-2 py-1 w-full focus:outline-none focus:bg-black focus:scale-95 transition duration-300 ease-in"
               onChange={handleDetailsChange}
             />
           </section>
-          <section className="w-full min-h-24 border-2 border-white flex flex-col items-center text-center justify-center">
+          <section className="w-full min-h-24 flex flex-col items-center text-center justify-center">
             <label className=" text-[18px] " htmlFor="endsAt">
               Ends at
             </label>
@@ -127,30 +128,30 @@ const ReminderInputs = () => {
               type="text"
               name="endsAt"
               placeholder="Eg. 19h30"
-              className=" bg-slate-600 h-[70%] lg:h-[60%] rounded-md text-white px-2 py-1 w-full focus:outline-none focus:bg-black focus:scale-95 transition duration-300 ease-in"
+              className=" bg-slate-600/20 h-[70%] lg:h-[60%] text-[14px] placeholder:text-neutral-700 rounded-md text-black focus:text-white px-2 py-1 w-full focus:outline-none focus:bg-black focus:scale-95 transition duration-300 ease-in"
               onChange={handleDetailsChange}
             />
           </section>
-          <section className="w-full min-h-[40vh] lg:min-h-[45vh] border-2 border-white flex flex-col items-center text-center justify-center">
+          <section className="w-full min-h-[40vh] lg:min-h-[45vh] flex flex-col items-center text-center justify-center">
             <label className=" text-[18px] " htmlFor="detail">
               Reminder details
             </label>
             <textarea
               name="detail"
               placeholder="Add more information here"
-              className=" bg-slate-600 h-[90%] lg:h-[85%] rounded-md text-white px-2 py-1 w-full focus:outline-none focus:bg-black focus:scale-95 transition duration-300 ease-in"
+              className=" bg-slate-600/30 h-[90%] lg:h-[85%] rounded-md text-black focus:text-white px-2 py-1 w-full focus:outline-none focus:bg-black focus:scale-95 transition duration-300 ease-in"
               onChange={handleDetailsChange}
             />
           </section>
-          <section className="w-full min-h-24 border-2 border-white flex flex-col items-center text-center justify-center">
+          <section className="w-full min-h-24 flex flex-col items-center text-center justify-center">
             <label className=" text-[18px] " htmlFor="shareableLink">
               Attach a link
             </label>
             <input
               type="text"
               name="shareableLink"
-              placeholder="Eg. 19h30"
-              className=" bg-slate-600 h-[70%] lg:h-[60%] rounded-md text-white px-2 py-1 w-full focus:outline-none focus:bg-black focus:scale-95 transition duration-300 ease-in"
+              placeholder="Eg. https://instagram.com"
+              className=" bg-slate-600/20 h-[70%] lg:h-[60%] text-[14px] placeholder:text-neutral-700 rounded-md text-black focus:text-white px-2 py-1 w-full focus:outline-none focus:bg-black focus:scale-95 transition duration-300 ease-in"
               onChange={handleDetailsChange}
             />
           </section>

@@ -14,6 +14,7 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import "@stream-io/video-react-sdk/dist/css/styles.css";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 const libreDisplay = Libre_Caslon_Display({
@@ -34,7 +35,29 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={libreDisplay.className}>{children}</body>
+        <body className={libreDisplay.className}>
+          <Toaster
+            toastOptions={{
+              className: "",
+              position: "top-right",
+              success: {
+                style: {
+                  padding: "16px",
+                  color: "black",
+                  background: "white",
+                },
+              },
+              error: {
+                style: {
+                  padding: "16px",
+                  color: "red",
+                  background: "white",
+                },
+              },
+            }}
+          />
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );
