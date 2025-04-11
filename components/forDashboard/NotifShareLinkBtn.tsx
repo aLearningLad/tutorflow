@@ -6,6 +6,7 @@ import InvitedConfirmTab from "./InvitedConfirmTab";
 import { createClient } from "@/lib/supabase/client";
 import { FaTrashAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
   author_id,
@@ -31,7 +32,7 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
         sendlist.length < 1 ||
         !session_link
       ) {
-        alert("Something went wrong. Please contact the developer");
+        toast("Something went wrong. Please contact the developer");
         return;
       }
 
@@ -60,16 +61,16 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
       });
 
       // show loading
-      alert("Sending emails...");
+      toast("Sending emails...");
 
       const data = await response.json();
       if (response.ok) {
         console.log("Link shared successfully");
         router.refresh();
-        alert("Link shared!");
+        toast.success("Link shared!");
       } else {
         console.error("Failed to send reminders: ", data.message);
-        alert("Unable to send reminders");
+        toast.error("Unable to send reminders");
       }
     } catch (error) {
       console.log("Error sharing link: ", error);
@@ -84,7 +85,7 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
 
   const handleDelete = async () => {
     if (!tut_id) {
-      alert("Something went wrong. Please contact the developer");
+      toast.error("Something went wrong. Please contact the developer");
       return;
     }
 
@@ -97,12 +98,12 @@ const NotifShareLinkBtn: React.FC<Tcalendertutdata> = ({
 
       // throw the error, if any
       if (deletionError) {
-        alert("Something went wrong. Please contact the developer.");
+        toast.error("Something went wrong. Please contact the developer.");
         throw new Error(deletionError.message);
       }
 
       router.refresh();
-      alert("Notification deleted successfully");
+      toast.success("Notification deleted successfully");
     } catch (error) {
       console.log("Error while deleting notification: ", error);
     }

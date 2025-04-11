@@ -7,6 +7,7 @@ import CalenderInvitees from "./CalenderInvitees";
 import { createClient } from "@/lib/supabase/client";
 import { nanoid } from "nanoid";
 import { useUser } from "@clerk/nextjs";
+import toast from "react-hot-toast";
 
 const TraversalBtns = () => {
   const { user } = useUser();
@@ -28,7 +29,7 @@ const TraversalBtns = () => {
 
     try {
       if (emails.length < 1) {
-        alert("Nah fam! That email list is soooo short!");
+        toast.error("Nah fam! That email list is soooo short!");
         return;
       }
 
@@ -44,7 +45,7 @@ const TraversalBtns = () => {
         });
 
       if (calenderError) {
-        alert;
+        toast.error("Calender update error");
         throw new Error(calenderError.details);
       }
     } catch (error) {

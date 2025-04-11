@@ -1,7 +1,14 @@
 import VideoRoom from "@/components/forTutRoom/VideoRoom";
 import React from "react";
 
-const TutRoom = (params: TtutRoomParams) => {
+interface PageProps {
+  params: {
+    id: string;
+  };
+  searchParams?: any;
+}
+
+const TutRoom = ({ params }: PageProps) => {
   const { id } = params;
   return (
     <main className=" min-h-screen bg-slate-900">

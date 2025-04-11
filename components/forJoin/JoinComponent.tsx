@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { FaLink } from "react-icons/fa";
 
 const JoinComponent = () => {
@@ -17,7 +18,7 @@ const JoinComponent = () => {
 
   const handleJoin = async () => {
     if (pastedLink.length < 10) {
-      alert("Please paste a veritable link to join a session");
+      toast.error("Please paste a veritable link to join a session");
       return;
     }
     try {

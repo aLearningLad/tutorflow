@@ -39,3 +39,4 @@ next-env.d.ts
 
 # text/notepad files
 todos.txt
+.qodo

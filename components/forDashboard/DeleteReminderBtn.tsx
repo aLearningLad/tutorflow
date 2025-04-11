@@ -3,6 +3,7 @@
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { FaTrashAlt } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const DeleteReminderBtn: React.FC<Tdeletereminderbtn> = ({ reminderId }) => {
   const router = useRouter();
@@ -23,7 +24,7 @@ const DeleteReminderBtn: React.FC<Tdeletereminderbtn> = ({ reminderId }) => {
         throw new Error(reminderDeletionError.details);
       }
 
-      alert("Deleted!");
+      toast.success("Deleted!");
       router.refresh();
     } catch (error) {
       console.log("Error while deleting reminder: ", error);

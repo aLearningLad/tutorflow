@@ -84,7 +84,7 @@ const ReminderInputs = () => {
         throw new Error(reminderSubmissionError.message);
       }
 
-      alert("Bravo! Submitted successfully!");
+      toast.success("Bravo! Submitted successfully!");
       setIsSubmitted(true); //use this state to toggle prompt to close modal
       router.refresh();
     } catch (error) {

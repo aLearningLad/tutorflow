@@ -128,7 +128,7 @@ export function LandingDock() {
                 <TooltipTrigger asChild>
                   <Link
                     href={social.url}
-                    target="_blank"
+                    target={social.url === "/dashboard" ? "_self" : "_blank"}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
                       "size-12 rounded-full group hover:bg-neutral-50/40 flex flex-col items-center justify-center"

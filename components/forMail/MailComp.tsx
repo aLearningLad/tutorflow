@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import RecipientTab from "./RecipientTab";
+import toast from "react-hot-toast";
 
 const MailComp = () => {
   const [emailContents, setEmailContents] = useState<string>("");
@@ -9,12 +10,12 @@ const MailComp = () => {
 
   const handleAdd = () => {
     if (emailContents.length < 5) {
-      alert("Email address too short!");
+      toast.error("Email address too short!");
       return;
     }
 
     if (recipientList.includes(emailContents)) {
-      alert("You're attempting to add a duplicate!");
+      toast.error("You're attempting to add a duplicate!");
       return;
     }
 

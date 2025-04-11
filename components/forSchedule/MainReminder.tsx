@@ -6,11 +6,11 @@ import SchedulingTopLeft from "./SchedulingTopLeft";
 const MainReminder: React.FC<TreminderCard> = ({
   author,
   detail,
-  endsAt,
+  endsat,
   is_private,
-  reminderId,
-  shareableLink,
-  startsAt,
+  reminderid,
+  shareable_link,
+  startsat,
   title,
 }) => {
   return (
@@ -25,7 +25,7 @@ const MainReminder: React.FC<TreminderCard> = ({
           <div className=" w-full  flex justify-between ">
             <span className="py-2 px-4 bg-neutral-100/10 rounded-md">
               <p className="text-[10px] ">from</p>
-              <h2>{startsAt}</h2>
+              <h2>{startsat}</h2>
             </span>
             <span className="min-w-[30%] max-w-[50%] text-ellipsis flex items-center justify-center bg-neutral-100/10 py-2 px-5 lg:px-7 rounded-md gap-2 ">
               <GiDiceTarget size={20} />
@@ -33,7 +33,7 @@ const MainReminder: React.FC<TreminderCard> = ({
             </span>
             <span className="py-2 px-4 bg-neutral-100/10 rounded-md ">
               <p className="text-[10px]">until</p>
-              <h2>{endsAt}</h2>
+              <h2>{endsat}</h2>
             </span>
           </div>
         </section>
