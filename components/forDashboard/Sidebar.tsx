@@ -3,12 +3,30 @@ import { sidebardata } from "@/misc/sidebardata";
 import SideBarBtn from "../forSidebar/SideBarBtn";
 import { CgMenuGridR } from "react-icons/cg";
 import MobileNavToggle from "../forLayouts/MobileNavToggle";
+import { Dancing_Script } from "next/font/google";
+import clsx from "clsx";
+
+const dancingScript = Dancing_Script({
+  weight: "400", // Specify the desired weight
+  subsets: ["latin"], // Optional, specify subsets if needed
+});
 
 const Sidebar: React.FC<Isidebar> = () => {
   return (
     <nav className="fixed z-20 bottom-0 lg:relative h-14 lg:min-h-screen w-full lg:w-24 bg-slate-900 lg:border-r-2 border-neutral-600">
       <section className=" w-2/12 lg:w-full hidden lg:flex justify-center items-center h-full lg:h-1/6 xl:h-[13%] bg-neutral-500/40">
         {/* app logo here */}
+        {/* <section className=" mb-12 h-full w-full flex justify-center items-center"> */}
+        <h2 className=" text-[12px] text-white ">tutor</h2>
+        <h1
+          className={clsx(
+            dancingScript.className,
+            "text-[12px] text-yellow-400"
+          )}
+        >
+          FLOW
+        </h1>
+        {/* </section> */}
       </section>
       <section className=" w-full h-full flex lg:hidden justify-center items-center">
         {/* only on small screens */}

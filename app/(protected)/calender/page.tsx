@@ -100,8 +100,8 @@ const CalenderPage = async () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900 flex flex-col text-white">
-      No calender-marked tutorials to show here
+    <div className="min-h-screen bg-slate-900 flex flex-col text-white h-full text-2xl justify-center items-center">
+      You don't currently have any calender-marked tutorials
     </div>
   );
 };

@@ -4,7 +4,11 @@ import {
   createRouteMatcher,
 } from "@clerk/nextjs/server";
 
-const theseAreProtected = createRouteMatcher(["/dashboard", "/tutroom/(.*)"]);
+const theseAreProtected = createRouteMatcher([
+  "/dashboard",
+  "/tutroom/(.*)",
+  "/calender",
+]);
 
 export default clerkMiddleware((auth, req) => {
   if (theseAreProtected(req)) {
